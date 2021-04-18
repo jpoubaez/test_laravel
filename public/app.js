@@ -1,1 +1,1 @@
-alert('Sóc aquí');
+alert('Acceptes polítiques protecció dades?');

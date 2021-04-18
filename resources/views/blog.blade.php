@@ -4,5 +4,31 @@
 <script src="/app.js"/></script>
 
 <body>
-	<h1>Primera prova Joan Pou</h1>
+	<article>
+		<h1><a href="/post"> Primera entrada blog Joan Pou</a></h1>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non augue et eros condimentum luctus aliquet a nisi. Suspendisse placerat consectetur dictum. In in mattis libero. Proin mattis tempor gravida. Vivamus aliquet purus diam, a interdum leo porttitor eget. Vestibulum libero augue, tincidunt id condimentum vel, faucibus non nibh. Ut luctus auctor lectus nec semper. Vivamus sollicitudin turpis sed sem aliquam, eu scelerisque libero pretium. Quisque efficitur elit mauris, at cursus risus venenatis ornare. Sed vel tincidunt velit. Vestibulum vitae orci ipsum. Vestibulum vestibulum mattis nunc sit amet scelerisque. Donec orci risus, egestas et tortor eu, pellentesque interdum felis. Donec enim justo, placerat eget odio sit amet, tristique fermentum odio. Suspendisse sit amet pharetra elit, ac finibus eros.
+
+			In lectus felis, aliquam ac elementum ut, varius ac velit. Sed viverra quam venenatis ullamcorper tincidunt. Phasellus suscipit dui vel tellus aliquam congue. In sit amet erat mauris. Donec tempor nisi elit, ultrices pellentesque enim fermentum vel. Vivamus vitae blandit purus. Vestibulum ornare lorem vitae laoreet condimentum. Curabitur vehicula mauris tristique elit fermentum, eu dapibus libero laoreet. Maecenas mi nulla, blandit eu lacus id, rhoncus porttitor tellus. Nunc volutpat pulvinar dignissim. Praesent lobortis sed eros sit amet bibendum. Sed quis mauris et leo posuere feugiat.
+		</p>
+	</article>
+
+	<article>
+		<h1><a href="/post"> Segona entrada blog Joan Pou</a></h1>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non augue et eros condimentum luctus aliquet a nisi. Suspendisse placerat consectetur dictum. In in mattis libero. Proin mattis tempor gravida. Vivamus aliquet purus diam, a interdum leo porttitor eget. Vestibulum libero augue, tincidunt id condimentum vel, faucibus non nibh. Ut luctus auctor lectus nec semper. Vivamus sollicitudin turpis sed sem aliquam, eu scelerisque libero pretium. Quisque efficitur elit mauris, at cursus risus venenatis ornare. Sed vel tincidunt velit. Vestibulum vitae orci ipsum. Vestibulum vestibulum mattis nunc sit amet scelerisque. Donec orci risus, egestas et tortor eu, pellentesque interdum felis. Donec enim justo, placerat eget odio sit amet, tristique fermentum odio. Suspendisse sit amet pharetra elit, ac finibus eros.
+
+			In lectus felis, aliquam ac elementum ut, varius ac velit. Sed viverra quam venenatis ullamcorper tincidunt. Phasellus suscipit dui vel tellus aliquam congue. In sit amet erat mauris. Donec tempor nisi elit, ultrices pellentesque enim fermentum vel. Vivamus vitae blandit purus. Vestibulum ornare lorem vitae laoreet condimentum. Curabitur vehicula mauris tristique elit fermentum, eu dapibus libero laoreet. Maecenas mi nulla, blandit eu lacus id, rhoncus porttitor tellus. Nunc volutpat pulvinar dignissim. Praesent lobortis sed eros sit amet bibendum. Sed quis mauris et leo posuere feugiat.
+		</p>
+	</article>
+
+	<article>
+		<h1><a href="/post"> Tercera entrada blog Joan Pou</a></h1>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non augue et eros condimentum luctus aliquet a nisi. Suspendisse placerat consectetur dictum. In in mattis libero. Proin mattis tempor gravida. Vivamus aliquet purus diam, a interdum leo porttitor eget. Vestibulum libero augue, tincidunt id condimentum vel, faucibus non nibh. Ut luctus auctor lectus nec semper. Vivamus sollicitudin turpis sed sem aliquam, eu scelerisque libero pretium. Quisque efficitur elit mauris, at cursus risus venenatis ornare. Sed vel tincidunt velit. Vestibulum vitae orci ipsum. Vestibulum vestibulum mattis nunc sit amet scelerisque. Donec orci risus, egestas et tortor eu, pellentesque interdum felis. Donec enim justo, placerat eget odio sit amet, tristique fermentum odio. Suspendisse sit amet pharetra elit, ac finibus eros.
+
+			In lectus felis, aliquam ac elementum ut, varius ac velit. Sed viverra quam venenatis ullamcorper tincidunt. Phasellus suscipit dui vel tellus aliquam congue. In sit amet erat mauris. Donec tempor nisi elit, ultrices pellentesque enim fermentum vel. Vivamus vitae blandit purus. Vestibulum ornare lorem vitae laoreet condimentum. Curabitur vehicula mauris tristique elit fermentum, eu dapibus libero laoreet. Maecenas mi nulla, blandit eu lacus id, rhoncus porttitor tellus. Nunc volutpat pulvinar dignissim. Praesent lobortis sed eros sit amet bibendum. Sed quis mauris et leo posuere feugiat.
+		</p>
+	</article>
+	
 </body>
