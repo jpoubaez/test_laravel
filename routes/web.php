@@ -22,5 +22,24 @@ Route::get('blog', function () {
 });
 
 Route::get('post', function () {
-    return view('post');
+	$post = file_get_contents(__DIR__.'/../resources/posts/primer.html');
+    return view('post', [
+    	'post' => $post
+    ]);
+});
+
+Route::get('posts/{post}', function ($slug) {
+
+	$path = __DIR__."/../resources/posts/{$slug}.html";
+	
+	if (! file_exists($path)) { // si no la troba cridem algo
+		// ddd("El fitxer no existeix"); // una funcio per fer missatge error
+		// abort(404);
+		return redirect('/blog'); // tornem a l'arrel
+	}
+	$post = file_get_contents($path);
+
+    return view('posts', [
+    	'posts_din' => $post
+    ]);
 });

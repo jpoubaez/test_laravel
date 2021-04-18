@@ -5,7 +5,7 @@
 
 <body>
 	<article>
-		<h1><a href="/post"> Primera entrada blog Joan Pou</a></h1>
+		<h1><a href="/posts/primer"> Primera entrada blog Joan Pou</a></h1>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non augue et eros condimentum luctus aliquet a nisi. Suspendisse placerat consectetur dictum. In in mattis libero. Proin mattis tempor gravida. Vivamus aliquet purus diam, a interdum leo porttitor eget. Vestibulum libero augue, tincidunt id condimentum vel, faucibus non nibh. Ut luctus auctor lectus nec semper. Vivamus sollicitudin turpis sed sem aliquam, eu scelerisque libero pretium. Quisque efficitur elit mauris, at cursus risus venenatis ornare. Sed vel tincidunt velit. Vestibulum vitae orci ipsum. Vestibulum vestibulum mattis nunc sit amet scelerisque. Donec orci risus, egestas et tortor eu, pellentesque interdum felis. Donec enim justo, placerat eget odio sit amet, tristique fermentum odio. Suspendisse sit amet pharetra elit, ac finibus eros.
 
@@ -14,7 +14,7 @@
 	</article>
 
 	<article>
-		<h1><a href="/post"> Segona entrada blog Joan Pou</a></h1>
+		<h1><a href="/posts/segon"> Segona entrada blog Joan Pou</a></h1>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non augue et eros condimentum luctus aliquet a nisi. Suspendisse placerat consectetur dictum. In in mattis libero. Proin mattis tempor gravida. Vivamus aliquet purus diam, a interdum leo porttitor eget. Vestibulum libero augue, tincidunt id condimentum vel, faucibus non nibh. Ut luctus auctor lectus nec semper. Vivamus sollicitudin turpis sed sem aliquam, eu scelerisque libero pretium. Quisque efficitur elit mauris, at cursus risus venenatis ornare. Sed vel tincidunt velit. Vestibulum vitae orci ipsum. Vestibulum vestibulum mattis nunc sit amet scelerisque. Donec orci risus, egestas et tortor eu, pellentesque interdum felis. Donec enim justo, placerat eget odio sit amet, tristique fermentum odio. Suspendisse sit amet pharetra elit, ac finibus eros.
 
@@ -23,7 +23,7 @@
 	</article>
 
 	<article>
-		<h1><a href="/post"> Tercera entrada blog Joan Pou</a></h1>
+		<h1><a href="/posts/tercer"> Tercera entrada blog Joan Pou</a></h1>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non augue et eros condimentum luctus aliquet a nisi. Suspendisse placerat consectetur dictum. In in mattis libero. Proin mattis tempor gravida. Vivamus aliquet purus diam, a interdum leo porttitor eget. Vestibulum libero augue, tincidunt id condimentum vel, faucibus non nibh. Ut luctus auctor lectus nec semper. Vivamus sollicitudin turpis sed sem aliquam, eu scelerisque libero pretium. Quisque efficitur elit mauris, at cursus risus venenatis ornare. Sed vel tincidunt velit. Vestibulum vitae orci ipsum. Vestibulum vestibulum mattis nunc sit amet scelerisque. Donec orci risus, egestas et tortor eu, pellentesque interdum felis. Donec enim justo, placerat eget odio sit amet, tristique fermentum odio. Suspendisse sit amet pharetra elit, ac finibus eros.
 

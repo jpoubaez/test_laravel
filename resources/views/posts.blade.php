@@ -5,7 +5,7 @@
 
 <body>
 	<article>
-		<?= $post; ?>
+		<?= $posts_din; ?>
 	</article>
 
 	<a href="/blog">Torna enrera</a>
