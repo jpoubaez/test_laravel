@@ -14,14 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+	
     return view('welcome');
 });
 
 Route::get('blog', function () {
+	
     return view('blog');
 });
 
 Route::get('post', function () {
+	
 	$post = file_get_contents(__DIR__.'/../resources/posts/primer.html');
     return view('post', [
     	'post' => $post
@@ -33,13 +36,14 @@ Route::get('posts/{post}', function ($slug) {
 	$path = __DIR__."/../resources/posts/{$slug}.html";
 	
 	if (! file_exists($path)) { // si no la troba cridem algo
-		// ddd("El fitxer no existeix"); // una funcio per fer missatge error
+		 //ddd("El fitxer no existeix"); // una funcio per fer missatge error
+		 ddd($path); // tornem el path dolent
 		// abort(404);
-		return redirect('/blog'); // tornem a l'arrel
+		//return redirect('/blog'); // tornem a l'arrel
 	}
 	$post = file_get_contents($path);
 
     return view('posts', [
     	'posts_din' => $post
     ]);
-});
+})-> where ('post','[A-z]+');
