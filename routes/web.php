@@ -37,11 +37,15 @@ Route::get('posts/{post}', function ($slug) {
 	
 	if (! file_exists($path)) { // si no la troba cridem algo
 		 //ddd("El fitxer no existeix"); // una funcio per fer missatge error
-		 ddd($path); // tornem el path dolent
+		 //ddd($path); // tornem el path dolent
 		// abort(404);
-		//return redirect('/blog'); // tornem a l'arrel
+		return redirect('/blog'); // tornem a l'arrel
 	}
-	$post = file_get_contents($path);
+	$post = cache()->remember("posts.{$slug}", 5, function() use ($path) {
+		var_dump('file_get_contents');
+		return file_get_contents($path);
+	});
+
 
     return view('posts', [
     	'posts_din' => $post
