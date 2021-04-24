@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,11 @@ Route::get('/', function () {
 });
 
 Route::get('blog', function () {
-	
-    return view('blog');
+
+	$posts = Post::all();	
+    return view('blog',[
+    	'posts' => $posts
+    ]);
 });
 
 Route::get('post', function () {
@@ -32,22 +36,11 @@ Route::get('post', function () {
 });
 
 Route::get('posts/{post}', function ($slug) {
+	// Troba un post que té un slug i el passa a una vista que es diu posts
 
-	$path = __DIR__."/../resources/posts/{$slug}.html";
-	
-	if (! file_exists($path)) { // si no la troba cridem algo
-		 //ddd("El fitxer no existeix"); // una funcio per fer missatge error
-		 //ddd($path); // tornem el path dolent
-		// abort(404);
-		return redirect('/blog'); // tornem a l'arrel
-	}
-	$post = cache()->remember("posts.{$slug}", 5, function() use ($path) {
-		var_dump('file_get_contents');
-		return file_get_contents($path);
-	});
+	$post = Post::find($slug);
+	return view('posts',[
+		'posts_din' => $post
+	]);
 
-
-    return view('posts', [
-    	'posts_din' => $post
-    ]);
 })-> where ('post','[A-z]+');
