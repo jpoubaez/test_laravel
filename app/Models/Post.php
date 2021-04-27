@@ -11,6 +11,23 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class Post 
 {
 	
+	public $titol;
+	public $excerpt;
+	public $data;
+	public $body;
+	public $slug;
+
+	public function __construct($titol, $excerpt, $data, $body, $slug)
+	{
+
+		$this->titol = $titol;
+		$this->excerpt = $excerpt;
+		$this->data = $data;
+		$this->body = $body;
+		$this->slug = $slug;
+
+	}
+
 	public static function find($slug)
 	{
 		$path = resource_path("posts/{$slug}.html");
