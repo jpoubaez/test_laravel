@@ -4,18 +4,18 @@
 <script src="/app.js"/></script>
 
 <body>
-	<?php foreach ($posts as $post) : ?>
-		<article>
+	@foreach ($posts as $post)
+		<article class="{{ $loop->even ? 'foo' : '' }}">
 			<h1>
-				<a href="/posts/<?= $post->slug; ?>">
-						<?= $post->titol; ?>
+				<a href="/posts/{{ $post->slug }}">
+						{{ $post->titol }}
 				</a>
 			</h1>
 
 			<div>
-				<?= $post->excerpt; ?>
+				{{ $post->excerpt }}
 			</div>
 			
 		</article>
-	<?php endforeach; ?>
+	@endforeach
 </body>

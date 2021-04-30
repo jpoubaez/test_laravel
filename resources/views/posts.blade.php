@@ -4,9 +4,9 @@
 
 <body>
 	<article>
-		<h1><?= $posts_din->titol; ?></h1>
+		<h1>{{$posts_din->titol}}</h1>
 		<div>
-			<?= $posts_din->body; ?>
+			{!! $posts_din->body !!}
 		</div>
 		
 	</article>
