@@ -39,14 +39,12 @@ class Post
 	}
 
 	public static function all() {
-
-		$fitxers = File::files(resource_path("posts"));
-
-		$posts = collect($fitxers)  // podem fer map , filter, each , merge, pull , push , 
-			-> map(fn($fitxer)=> YamlFrontMatter::parseFile($fitxer))
-			->map(fn($docu)=> new Post($docu->titol,$docu->excerpt,$docu->data,$docu->body(),$docu->slug)); 
 	    
-		return $posts;
+		return cache()->rememberForever('posts.all', function(){ 
+			return collect(File::files(resource_path("posts")))  // podem fer map , filter, each , merge, pull , push , 
+			-> map(fn($fitxer)=> YamlFrontMatter::parseFile($fitxer))
+			->map(fn($docu)=> new Post($docu->titol,$docu->excerpt,$docu->data,$docu->body(),$docu->slug))->sortByDesc('data'); 
+		});
 	}
 
 }
