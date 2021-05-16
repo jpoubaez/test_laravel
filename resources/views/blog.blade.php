@@ -1,10 +1,9 @@
-<!doctype html>
-<title>El meu blog</title>
-<link rel="stylesheet" href="/app.css">
-<script src="/app.js"/></script>
-
-<body>
-	@foreach ($posts as $post)
+<x-layout>
+	<x-slot name="banner">
+		<h1> El meu blog </h1>
+	</x-slot>	
+	<x-slot name="content">
+		@foreach ($posts as $post)
 		<article class="{{ $loop->even ? 'foo' : '' }}">
 			<h1>
 				<a href="/posts/{{ $post->slug }}">
@@ -17,5 +16,7 @@
 			</div>
 			
 		</article>
-	@endforeach
-</body>
+			@endforeach
+	</x-slot>
+</x-layout>
+
