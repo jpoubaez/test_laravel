@@ -20,3 +20,12 @@ article + article {
 a {
 	color: white;
 }
+
+.foo {
+	background: white;
+	color: black;
+}
+
+.foo a {
+	color: black;
+}

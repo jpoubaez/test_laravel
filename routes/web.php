@@ -39,10 +39,11 @@ Route::get('post', function () {
 Route::get('posts/{post}', function ($slug) {
 	// Troba un post que té un slug i el passa a una vista que es diu posts.
 
-	$post = Post::find($slug);
+	$post = Post::findOrFail($slug);
+
 
 	return view('posts',[
 		'posts_din' => $post
 	]);
 
-})-> where ('post','[A-z]+');
+});

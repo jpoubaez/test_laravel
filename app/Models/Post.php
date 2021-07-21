@@ -38,6 +38,23 @@ class Post
 		return $posts->firstWhere('slug',$slug);
 	}
 
+	public static function findOrFail($slug)
+	{
+		// Trobar un slug que coincideixi amb el demanat
+		// Cridarem tots els posts i en mirarem el slug
+		
+		
+		$torna= static::find($slug);
+		
+		if (! $torna) {
+			throw new ModelNotFoundException("Error Processing Request", 1);
+			
+		}
+
+		return $torna;
+
+	}
+
 	public static function all() {
 	    
 		return cache()->rememberForever('posts.all', function(){ 
