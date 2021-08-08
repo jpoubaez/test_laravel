@@ -17,6 +17,12 @@ use App\Models\Post;
 Route::get('/', function () {
 	
     return view('welcome');
+    //return 'hola';
+});
+
+Route::get('kk', function () {
+	
+    return 'hola';
 });
 
 Route::get('blog', function () {
