@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Models\Dentista;
 use Spatie\YamlFrontMatter\YamlFrontMatter; 
 
 /*
@@ -37,13 +38,33 @@ Route::get('post', function () {
     ]);
 });
 
-Route::get('posts/{post}', function ($slug) {
-	// Troba un post que té un slug i el passa a una vista que es diu posts
+Route::get('posts/{post}', function ($id) {
+	// Troba un post que té un id i el passa a una vista que es diu posts
 
-	$post = Post::findOrFail($slug);
+	$post = Post::findOrFail($id);
 
 	return view('posts',[
 		'posts_din' => $post
+	]);
+
+});
+
+Route::get('dentistes', function () {
+
+	$dentistes = Dentista::all();	
+
+	return view('dentistes',[
+    	'dentistes' => $dentistes
+    ]);
+});
+
+Route::get('dentistes/{dentista}', function ($id) {
+	// Troba un dentista que té un id i el passa a una vista que es diu dentista
+
+	$dentista = Dentista::findOrFail($id);
+
+	return view('dentista',[
+		'dentista_din' => $dentista
 	]);
 
 });

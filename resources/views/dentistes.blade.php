@@ -1,18 +1,18 @@
 <x-layout>
 	<x-slot name="banner">
-		<h1> El meu blog </h1>
+		<h1> Els dentistes </h1>
 	</x-slot>	
 	<x-slot name="content">
-		@foreach ($posts as $post)
+		@foreach ($dentistes as $dentista)
 		<article class="{{ $loop->even ? 'foo' : '' }}">
 			<h1>
-				<a href="/posts/{{ $post->id }}">
-						{{ $post->titol }}
+				<a href="/dentistes/{{ $dentista->id }}">
+						{{ $dentista->nom }}
 				</a>
 			</h1>
 
 			<div>
-				{{ $post->excerpt }}
+				{{ $dentista->ciutat }}
 			</div>
 			
 		</article>
