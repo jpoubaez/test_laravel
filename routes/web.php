@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use Spatie\YamlFrontMatter\YamlFrontMatter; 
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +18,6 @@ use App\Models\Post;
 Route::get('/', function () {
 	
     return view('welcome');
-    //return 'hola';
-});
-
-Route::get('kk', function () {
-	
-    return 'hola';
 });
 
 Route::get('blog', function () {
@@ -43,10 +38,9 @@ Route::get('post', function () {
 });
 
 Route::get('posts/{post}', function ($slug) {
-	// Troba un post que té un slug i el passa a una vista que es diu posts.
+	// Troba un post que té un slug i el passa a una vista que es diu posts
 
 	$post = Post::findOrFail($slug);
-
 
 	return view('posts',[
 		'posts_din' => $post
