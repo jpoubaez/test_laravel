@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\Dentista;
 use Spatie\YamlFrontMatter\YamlFrontMatter; 
+use App\Http\Controllers\DentistaprovaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +69,6 @@ Route::get('dentistes/{dentista}', function ($id) {
 	]);
 
 });
+
+Route::get('afegeix-dentista-post-form', [DentistaprovaController::class, 'index']);
+Route::post('guarda-dentista-form', [DentistaprovaController::class, 'store']);

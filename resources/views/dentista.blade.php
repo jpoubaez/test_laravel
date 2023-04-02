@@ -9,8 +9,23 @@
 			<div>
 				{!! $dentista_din->adresa !!}
 			</div>
-		
+			<div>
+				{!! $dentista_din->codipostal !!}
+			</div>
+			<div>
+				{!! $dentista_din->ciutat !!}
+			</div>
+			<div>
+				{!! $dentista_din->NIF !!}
+			</div>
+			<div>
+				{!! $dentista_din->numcolegiat !!}
+			</div>
+
 		</article>
-		<a href="/dentistes">Torna enrera</a>
+		<div>
+			<br>
+			<a href="/dentistes">Torna enrera</a>
+		</div>
 	</x-slot>
 </x-layout>
