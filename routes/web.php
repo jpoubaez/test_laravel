@@ -39,10 +39,8 @@ Route::get('post', function () {
     ]);
 });
 
-Route::get('posts/{post}', function ($id) {
-	// Troba un post que té un id i el passa a una vista que es diu posts
-
-	$post = Post::findOrFail($id);
+Route::get('posts/{post:slug}', function (Post $post) { // Aixo farà Post::where('slug',$post=>firstOrFail()) torna el primer amb l'slug a trobar
+	// Troba un post directament
 
 	return view('posts',[
 		'posts_din' => $post
