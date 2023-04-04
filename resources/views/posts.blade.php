@@ -7,7 +7,7 @@
 		<article>
 			<h1>{{$posts_din->titol}}</h1>
 			<p>
-				<a href="#"> {{ $posts_din->categoria->nom}}</a>
+				<a href="/categories/{{$posts_din->categoria->slug}}"> {{ $posts_din->categoria->nom}}</a>
 			</p>
 
 			<div>

@@ -1,3 +1,4 @@
+
 body {
 	background: navy;
 	color: white;
@@ -5,6 +6,7 @@ body {
 	margin: auto;
 	font-family: sans-serif;
 }
+
 
 p {
 	line-height: 1.6;
@@ -28,4 +30,37 @@ a {
 
 .foo a {
 	color: black;
+}
+
+nav {	
+	position: fixed;
+	display: block;
+	overflow: hidden;
+	top:5px;
+	margin-bottom: 150px;
+	color: darkred;
+
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
 }

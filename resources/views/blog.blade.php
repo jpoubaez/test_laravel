@@ -6,14 +6,14 @@
 		@foreach ($posts as $post)
 		<article class="{{ $loop->even ? 'foo' : '' }}">
 			<h1>
-				<a href="/posts/{{ $post->slug }}">
+				Títol del post:	<a href="/posts/{{ $post->slug }}">
 						{{ $post->titol }}
 				</a>
 			</h1>
 			<p>
-				<a href="#"> {{ $post->categoria->nom}}</a>
+				Nom categoria: 	<a href="/categories/{{$post->categoria->slug}}"> {{ $post->categoria->nom}}</a>
 			</p>
-			
+
 			<div>
 				{{ $post->excerpt }}
 			</div>

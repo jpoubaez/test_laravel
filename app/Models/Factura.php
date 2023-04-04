@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Factura extends Model
 {
     use HasFactory;
-    protected $table = 'categories';
+    protected $table = 'factures';
 
-    public function posts()
+    public function encarrec()
     {
         // hasOne, hasMany, belongsTo, belongsToMany
-        //return $this->hasMany(Post::class);
-        return $this->hasMany(Post::class,'categoria_id');
+        return $this->belongsTo(Encarrec::class);
+
     }
 }
-

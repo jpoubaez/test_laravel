@@ -7,10 +7,19 @@
 		<article class="{{ $loop->even ? 'foo' : '' }}">
 			<h1>
 				<a href="/dentistes/{{ $dentista->id }}">
-						{{ $dentista->nom }}
+						Nom dentista: {{ $dentista->nom }}
 				</a>
 			</h1>
-
+			@php
+			$encarrecs = $dentista->encarrecs;
+			foreach ($encarrecs as $encarrec) {
+			@endphp
+			<p>
+				Ha fet aquest Encarrec: <a href="/encarrecs/{{$encarrec->id}}"> {{ $encarrec->descripcio}}</a>
+			</p>
+			@php
+			}
+            @endphp
 			<div>
 				{{ $dentista->ciutat }}
 			</div>
