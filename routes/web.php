@@ -66,7 +66,7 @@ Route::get('categories', function () {
 Route::get('categories/{categoria:slug}', function (Category $categoria) {
 
 	return view('blog', [
-    	'posts' => $categoria->posts
+    	'posts' => $categoria->posts->load(['categoria','autor'])
     ]);
 
 });
@@ -74,7 +74,7 @@ Route::get('categories/{categoria:slug}', function (Category $categoria) {
 Route::get('autors/{autor:username}', function (User $autor) {
 
 	return view('blog', [
-    	'posts' => $autor->posts
+    	'posts' => $autor->posts->load(['categoria','autor'])
     ]);
 
 });
