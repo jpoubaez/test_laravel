@@ -7,6 +7,7 @@ use App\Models\Dentista;
 use App\Models\Factura;
 use App\Models\Material;
 use App\Models\Encarrec;
+use App\Models\User;
 use Spatie\YamlFrontMatter\YamlFrontMatter; 
 use App\Http\Controllers\DentistaprovaController;
 
@@ -28,7 +29,9 @@ Route::get('/', function () {
 
 Route::get('blog', function () {
 
-	$posts = Post::with('categoria')->get();	
+	$posts = Post::latest('updated_at')->with('categoria','autor')->get(); // el with per evitar consultes de més (N+1 problem)
+	//$posts = Post::get();
+	//$posts = Post::all();	
 
 	return view('blog',[
     	'posts' => $posts
@@ -64,6 +67,14 @@ Route::get('categories/{categoria:slug}', function (Category $categoria) {
 
 	return view('blog', [
     	'posts' => $categoria->posts
+    ]);
+
+});
+
+Route::get('autors/{autor:username}', function (User $autor) {
+
+	return view('blog', [
+    	'posts' => $autor->posts
     ]);
 
 });

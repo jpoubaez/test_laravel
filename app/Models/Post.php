@@ -18,10 +18,11 @@ class Post extends Model
 
     }
 
-    public function user()
+
+    //public function user() // assumeix que la foreign key es user_id
+    public function autor() 
     {
         // hasOne, hasMany, belongsTo, belongsToMany
-        return $this->belongsTo(User::class);
-
+        return $this->belongsTo(User::class, 'user_id'); // li puc forçar el camp on hi ha la foreign key
     }
 }

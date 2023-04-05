@@ -7,7 +7,7 @@
 		<article>
 			<h1>{{$posts_din->titol}}</h1>
 			<p>
-				<a href="/categories/{{$posts_din->categoria->slug}}"> {{ $posts_din->categoria->nom}}</a>
+				Autor: <a href="/autors/{{$posts_din->autor->username}}"> {{ $posts_din->autor->name }} </a>  Nom categoria:  <a href="/categories/{{$posts_din->categoria->slug}}"> {{ $posts_din->categoria->nom}}</a>
 			</p>
 
 			<div>

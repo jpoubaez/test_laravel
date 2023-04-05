@@ -12,7 +12,7 @@
 
 			</h1>
 			<p>
-				Autor: <a href="#"> {{ $post->user->name }} </a>  Nom categoria: 	<a href="/categories/{{$post->categoria->slug}}"> {{ $post->categoria->nom}}</a>
+				Autor: <a href="/autors/{{$post->autor->username}}"> {{ $post->autor->name }} </a>  Nom categoria: 	<a href="/categories/{{$post->categoria->slug}}"> {{ $post->categoria->nom}}</a>
 			</p>
 
 			<div>
