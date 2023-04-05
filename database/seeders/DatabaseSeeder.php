@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use \App\Models\User;
+use \App\Models\Category;
+use \App\Models\Post;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,46 +17,20 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        \App\Models\User::truncate();
-        \App\Models\Category::truncate();
-        \App\Models\Post::truncate();
+        $usuari = User::factory()->create([
+            'name' => 'Joan Pou'
+        ]);
+        Post::factory(5)->create([
+            'user_id' => $usuari->id
+        ]);
 
-        // \App\Models\User::factory(10)->create();
-        $usuari = \App\Models\User::factory()->create();
+        $categoria = Category::factory()->create([
+            'nom' => 'Cinema'
+        ]);
+        Post::factory(5)->create([
+            'categoria_id' => $categoria->id
+        ]);
         
-        $personal = \App\Models\Category::create ([
-            'nom' => 'Personal','slug' => 'personal'
-        ]);
-
-        $familia = \App\Models\Category::create ([
-            'nom' => 'Familia','slug' => 'familia'
-        ]);
-
-        $work = \App\Models\Category::create ([
-            'nom' => 'Work','slug' => 'work'
-        ]);
-
-        $hobby = \App\Models\Category::create ([
-            'nom' => 'Hobby','slug' => 'hobby'
-        ]);
-
-        \App\Models\Post::create([
-            'user_id' => $usuari->id,
-            'categoria_id' => $familia->id,
-            'titol' => 'Post familiar',
-            'slug' => 'meu-primer-post',
-            'excerpt' => 'Lorem ipsum dolor sit amet.',
-            'body' => '<p>Lorem ipsum dolor sit amet consectetur adipiscing elit ridiculus ultrices eu sociosqu litora nullam porta class tempor, nostra eleifend purus duis tellus magna scelerisque ut nisl placerat accumsan vitae lectus nisi.</p>'
-        ]);
-
-        \App\Models\Post::create([
-            'user_id' => $usuari->id,
-            'categoria_id' => $hobby->id,
-            'titol' => 'Post hobby',
-            'slug' => 'meu-segon-post',
-            'excerpt' => 'Lorem ipsum dolor sit amet.',
-            'body' => '<p>Lorem ipsum dolor sit amet consectetur adipiscing elit ridiculus ultrices eu sociosqu litora nullam porta class tempor, nostra eleifend purus duis tellus magna scelerisque ut nisl placerat accumsan vitae lectus nisi.</p>'
-        ]);
          
     }
 }
