@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 Route::get('blog', function () {
 
-	$posts = Post::all();	
+	$posts = Post::with('categoria')->get();	
 
 	return view('blog',[
     	'posts' => $posts

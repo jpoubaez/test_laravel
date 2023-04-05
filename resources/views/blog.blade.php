@@ -7,11 +7,12 @@
 		<article class="{{ $loop->even ? 'foo' : '' }}">
 			<h1>
 				Títol del post:	<a href="/posts/{{ $post->slug }}">
-						{{ $post->titol }}
+						{{ $post->titol }} 
 				</a>
+
 			</h1>
 			<p>
-				Nom categoria: 	<a href="/categories/{{$post->categoria->slug}}"> {{ $post->categoria->nom}}</a>
+				Autor: <a href="#"> {{ $post->user->name }} </a>  Nom categoria: 	<a href="/categories/{{$post->categoria->slug}}"> {{ $post->categoria->nom}}</a>
 			</p>
 
 			<div>
