@@ -1,25 +1,14 @@
 <x-layout>
-	<x-slot name="banner">
-		<h1> El meu blog </h1>
-	</x-slot>	
-	<x-slot name="content">
-		@foreach ($posts as $post)
-		<article class="{{ $loop->even ? 'foo' : '' }}">
-			<h1>
-				Títol del post:	<a href="/posts/{{ $post->slug }}">
-						{{ $post->titol }} 
-				</a>
 
-			</h1>
-			<p>
-				Autor: <a href="/autors/{{$post->autor->username}}"> {{ $post->autor->name }} </a>  Nom categoria: 	<a href="/categories/{{$post->categoria->slug}}"> {{ $post->categoria->nom}}</a>
-			</p>
+		@include ('_posts-header')
 
-			<div>
-				{{ $post->excerpt }}
-			</div>
-			
-		</article>
-			@endforeach
-	</x-slot>
+        <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+        	@if ($posts->count())
+	            <x-posts-grid :posts="$posts" />
+	            
+            @else
+				<p text="center"> No tens res encara. Posa un post.</p>            
+            @endif
+            
+        </main>
 </x-layout>
