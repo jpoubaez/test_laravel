@@ -34,7 +34,8 @@ Route::get('blog', function () {
 	//$posts = Post::all();	
 
 	return view('blog',[
-    	'posts' => $posts
+    	'posts' => $posts,
+    	'categories' => Category::all()
     ]);
 });
 
@@ -66,7 +67,9 @@ Route::get('categories', function () {
 Route::get('categories/{categoria:slug}', function (Category $categoria) {
 
 	return view('blog', [
-    	'posts' => $categoria->posts->load(['categoria','autor'])
+    	'posts' => $categoria->posts->load(['categoria','autor']),
+		'categories' => Category::all(),
+		'categoriaActual' => $categoria
     ]);
 
 });
@@ -74,7 +77,8 @@ Route::get('categories/{categoria:slug}', function (Category $categoria) {
 Route::get('autors/{autor:username}', function (User $autor) {
 
 	return view('blog', [
-    	'posts' => $autor->posts->load(['categoria','autor'])
+    	'posts' => $autor->posts->load(['categoria','autor']),
+		'categories' => Category::all()
     ]);
 
 });
