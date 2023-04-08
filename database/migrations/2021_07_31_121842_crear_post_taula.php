@@ -20,7 +20,7 @@ class CrearPostTaula extends Migration
             $table->string('slug')->unique;
             $table->string('titol');
             $table->text('excerpt');
-            $table->string('body');
+            $table->text('body');
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
 

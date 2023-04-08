@@ -26,10 +26,10 @@ class PostFactory extends Factory
         return [
             'user_id' => User::factory(),  // li creem un usuari random
             'categoria_id' => Category::factory(),  // li creem un usuari random
-            'slug' => $this->faker->slug(),  // un slug random
+            'slug' => $this->faker->unique()->slug(),  // un slug random
             'titol' => $this->faker->sentence(),  // un text random
-            'excerpt' => $this->faker->sentence(),  // un text random
-            'body' => $this->faker->paragraph()  // un text random
+            'excerpt' => '<p>' . implode('</p><p>', $this->faker->paragraphs(2)) . '</p>',  // un text random
+            'body' => '<p>' . implode('</p><p>', $this->faker->paragraphs(6)) . '</p>'  // un text random
         ];
     }
 }

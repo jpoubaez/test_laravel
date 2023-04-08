@@ -22,8 +22,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'nom' => $this->faker->word(),  // li creem una paraula
-            'slug' => $this->faker->slug()  // li creem un slug random
+            'nom' => $this->faker->unique()->word(),  // li creem una paraula
+            'slug' => $this->faker->unique()->slug()  // li creem un slug random
         ];
     }
 }

@@ -24,13 +24,14 @@ class DatabaseSeeder extends Seeder
             'user_id' => $usuari->id
         ]);
 
+        Category::factory(5)->create();
         $categoria = Category::factory()->create([
             'nom' => 'Cinema'
         ]);
         Post::factory(5)->create([
             'categoria_id' => $categoria->id
         ]);
-        
+        Post::factory(20)->create();
          
     }
 }
