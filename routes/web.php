@@ -29,12 +29,20 @@ Route::get('/', function () {
 
 Route::get('blog', function () {
 
-	$posts = Post::latest('updated_at')->with('categoria','autor')->get(); // el with per evitar consultes de més (N+1 problem)
+	//$posts = Post::latest('updated_at')->with('categoria','autor')->get(); // el with per evitar consultes de més (N+1 problem)
+	$posts = Post::latest();
+	if (request('cerca')) {
+		//dd(request('search'));
+		// només tornarné els posts filtrats, no tots
+		$posts->where('titol','like', '%'.request('cerca').'%') // fem una consulta SQL
+		->orWhere('body','like', '%'.request('cerca').'%');
+	}
+	
 	//$posts = Post::get();
 	//$posts = Post::all();	
 
 	return view('blog',[
-    	'posts' => $posts,
+    	'posts' => $posts->get(),
     	'categories' => Category::all()
     ]);
 });
