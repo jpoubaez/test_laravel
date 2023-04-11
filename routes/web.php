@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\Dentista;
 use App\Models\Factura;
@@ -27,25 +28,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('blog', function () {
-
-	//$posts = Post::latest('updated_at')->with('categoria','autor')->get(); // el with per evitar consultes de més (N+1 problem)
-	$posts = Post::latest();
-	if (request('cerca')) {
-		//dd(request('search'));
-		// només tornarné els posts filtrats, no tots
-		$posts->where('titol','like', '%'.request('cerca').'%') // fem una consulta SQL
-		->orWhere('body','like', '%'.request('cerca').'%');
-	}
-	
-	//$posts = Post::get();
-	//$posts = Post::all();	
-
-	return view('blog',[
-    	'posts' => $posts->get(),
-    	'categories' => Category::all()
-    ]);
-});
+Route::get('blog', [PostController::class, 'index']);
 
 Route::get('post', function () {
 	
@@ -55,14 +38,7 @@ Route::get('post', function () {
     ]);
 });
 
-Route::get('posts/{post:slug}', function (Post $post) { // Aixo farà Post::where('slug',$post=>firstOrFail()) torna el primer amb l'slug a trobar
-	// Troba un post directament
-
-	return view('posts',[
-		'posts_din' => $post
-	]);
-
-});
+Route::get('posts/{post:slug}', [PostController::class, 'mostra']);
 
 Route::get('categories', function () {
 	$categories = Category::all();	
@@ -70,16 +46,6 @@ Route::get('categories', function () {
 	return view('categories',[
     	'categories' => $categories
     ]);
-});
-
-Route::get('categories/{categoria:slug}', function (Category $categoria) {
-
-	return view('blog', [
-    	'posts' => $categoria->posts->load(['categoria','autor']),
-		'categories' => Category::all(),
-		'categoriaActual' => $categoria
-    ]);
-
 });
 
 Route::get('autors/{autor:username}', function (User $autor) {

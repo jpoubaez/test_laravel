@@ -11,6 +11,28 @@ class Post extends Model
 
     protected $fillable = ['titol','excerpt','body'];
 
+    public function scopeFiltre($query, array $filtres)
+    {
+        if ($filtres['cerca'] ?? false) {
+            // només tornarné els posts filtrats, no tots
+            $query->where('titol','like', '%'.request('cerca').'%') // fem una consulta SQL
+            ->orWhere('body','like', '%'.request('cerca').'%');
+        }
+        /*if ($filtres['categoria'] ?? false) {
+            // només tornarné els posts filtrats, no tots
+            $query->whereExists(fn($query) =>
+                $query->from('categories')->whereColumn('categories.id','posts.categoria_id')
+                ->where('categories.slug',request('categoria')));
+        }*/
+
+        if ($filtres['categoria'] ?? false) {
+            // només tornarné els posts filtrats, no tots
+            $query->whereHas('categoria', fn($query) => // torna post amb la categoria
+                $query->where('slug',request('categoria')));  // que tingui un slug determinat
+        }
+       
+    }
+
     public function categoria()
     {
         // hasOne, hasMany, belongsTo, belongsToMany

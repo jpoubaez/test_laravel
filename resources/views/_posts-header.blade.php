@@ -21,7 +21,8 @@
 
                         @foreach ($categories as $categoria)
                         
-                            <x-dropdown-item href="/categories/{{$categoria->slug}}" 
+                            {{-- <x-dropdown-item href="/categories/{{$categoria->slug}}"  --}}
+                                <x-dropdown-item href="/blog?categoria={{$categoria->slug}}" 
                                 :active="isset($categoriaActual) && $categoriaActual->is($categoria)">{{ucwords($categoria->nom)}}
                             </x-dropdown-item>
                             
