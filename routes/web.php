@@ -30,6 +30,8 @@ Route::get('/', function () {
 
 Route::get('blog', [PostController::class, 'index']);
 
+Route::get('posts/{post:slug}', [PostController::class, 'mostra']);
+
 Route::get('post', function () {
 	
 	$post = file_get_contents(__DIR__.'/../resources/posts/primer.html');
@@ -37,8 +39,6 @@ Route::get('post', function () {
     	'post' => $post
     ]);
 });
-
-Route::get('posts/{post:slug}', [PostController::class, 'mostra']);
 
 Route::get('categories', function () {
 	$categories = Category::all();	

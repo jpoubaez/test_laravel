@@ -11,23 +11,16 @@ class PostController extends Controller
 {
     public function index()
     {
-        //$posts = Post::latest('updated_at')->with('categoria','autor')->get(); // el with per evitar consultes de més (N+1 problem)
         $posts = Post::latest();
         
-        
-        //$posts = Post::get();
-        //$posts = Post::all(); 
-
-        return view('blog',[
-            'posts' => Post::latest()->filtre(request(['cerca','categoria']))->get(),
-            'categories' => Category::all(),
-            'categoriaActual' => Category::firstWhere('slug',request('categoria'))
+        return view('posts.index',[
+            'posts' => Post::latest()->filtre(request(['cerca','categoria']))->get()
         ]);
     }
 
     public function mostra(Post $post)
     {
-        return view('posts',[
+        return view('posts.mostra',[
         'posts_din' => $post
         ]);
     }

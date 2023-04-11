@@ -3,6 +3,7 @@
 		<h1> El meu blog </h1>
 	</x-slot>	
 	<x-slot name="content">
+
 		@foreach ($categories as $categoria)
 		<article class="{{ $loop->even ? 'foo' : '' }}">
 			<h1>
