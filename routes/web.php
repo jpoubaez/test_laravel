@@ -50,7 +50,7 @@ Route::get('categories', function () {
 
 Route::get('autors/{autor:username}', function (User $autor) {
 
-	return view('blog', [
+	return view('posts.index', [
     	'posts' => $autor->posts->load(['categoria','autor']),
 		'categories' => Category::all()
     ]);

@@ -6,14 +6,14 @@
                             <img src="/images/illustration-3.png" alt="Blog Post illustration" class="rounded-xl">
                         </div>
 
-                        <div class="mt-6 flex flex-col justify-between flex-1">
+                        <div class="mt-8 flex flex-col justify-between flex-1">
                             <header>
                                 <div class="space-x-2">
                                     <x-categoria-button :categoria="$post->categoria" />
                                 </div>
 
                                 <div class="mt-4">
-                                    <h1 class="text-3xl">
+                                    <h1 class="text-xl">
                                         <a href="/posts/{{ $post->slug }}">{{ $post->titol }}</a>
                                     </h1>
 
@@ -34,13 +34,14 @@
                                 <div class="flex items-center text-sm">
                                     <img src="/images/lary-avatar.svg" alt="Lary avatar">
                                     <div class="ml-3">
-                                        <h5 class="font-bold">{{ $post->autor->name }}</h5>
-                                        <h6>Mascot at Laracasts</h6>
+                                        <h5 class="font-bold">
+                                            <a href="/autors/{{ $post->autor->username }}">{{ $post->autor->name }}</a>
+                                        </h5>
                                     </div>
                                 </div>
 
-                                <div>
-                                    <a href="{{ $post->slug }}"
+                                <div class="flex text-sm">
+                                    <a href="/posts/{{ $post->slug }}"
                                        class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-8"
                                     >Read More</a>
                                 </div>
