@@ -7,15 +7,16 @@
     </x-slot>
 
     {{--  aixo esta definit com $slot al fitxer del component --}}
-    
+
     <x-dropdown-item href="/blog">Totes</x-dropdown-item>
 
     @foreach ($categories as $categoria)
-    
+
         {{-- <x-dropdown-item href="/categories/{{$categoria->slug}}"  --}}
-            <x-dropdown-item href="/blog?categoria={{$categoria->slug}}" 
-            :active="isset($categoriaActual) && $categoriaActual->is($categoria)">{{ucwords($categoria->nom)}}
-        </x-dropdown-item>
-        
+        <x-dropdown-item
+            href="/blog?categoria={{$categoria->slug}}&{{ http_build_query(request()->except('categoria')) }}"
+            :active="isset($categoriaActual) && $categoriaActual->is($categoria)"
+        >{{ucwords($categoria->nom)}} </x-dropdown-item>
+
     @endforeach
 </x-dropdown>
