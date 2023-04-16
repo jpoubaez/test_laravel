@@ -30,6 +30,12 @@ class Post extends Model
             $query->whereHas('categoria', fn($query) => // torna post amb la categoria
                 $query->where('slug',request('categoria')));  // que tingui un slug determinat
         }
+
+        if ($filtres['autor'] ?? false) {
+            // només tornarné els posts filtrats, no tots
+            $query->whereHas('autor', fn($query) => // torna post amb l autor
+                $query->where('username',request('autor')));  // que tingui un username determinat
+        }
        
     }
 

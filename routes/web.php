@@ -9,7 +9,7 @@ use App\Models\Factura;
 use App\Models\Material;
 use App\Models\Encarrec;
 use App\Models\User;
-use Spatie\YamlFrontMatter\YamlFrontMatter; 
+use Spatie\YamlFrontMatter\YamlFrontMatter;
 use App\Http\Controllers\DentistaprovaController;
 
 /*
@@ -24,7 +24,7 @@ use App\Http\Controllers\DentistaprovaController;
 */
 
 Route::get('/', function () {
-	
+
     return view('welcome');
 });
 
@@ -32,34 +32,9 @@ Route::get('blog', [PostController::class, 'index']);
 
 Route::get('posts/{post:slug}', [PostController::class, 'mostra']);
 
-Route::get('post', function () {
-	
-	$post = file_get_contents(__DIR__.'/../resources/posts/primer.html');
-    return view('post', [
-    	'post' => $post
-    ]);
-});
-
-Route::get('categories', function () {
-	$categories = Category::all();	
-
-	return view('categories',[
-    	'categories' => $categories
-    ]);
-});
-
-Route::get('autors/{autor:username}', function (User $autor) {
-
-	return view('posts.index', [
-    	'posts' => $autor->posts->load(['categoria','autor']),
-		'categories' => Category::all()
-    ]);
-
-});
-
 Route::get('dentistes', function () {
 
-	$dentistes = Dentista::all();	
+	$dentistes = Dentista::all();
 
 	return view('dentistes',[
     	'dentistes' => $dentistes
@@ -82,7 +57,7 @@ Route::post('guarda-dentista-form', [DentistaprovaController::class, 'store']);
 
 Route::get('factures', function () {
 
-	$factures = Factura::all();	
+	$factures = Factura::all();
 
 	return view('factures',[
     	'factures' => $factures
@@ -102,7 +77,7 @@ Route::get('factures/{factura}', function ($id) {
 
 Route::get('encarrecs', function () {
 
-	$encarrecs = Encarrec::all();	
+	$encarrecs = Encarrec::all();
 
 	return view('encarrecs',[
     	'encarrecs' => $encarrecs
@@ -122,7 +97,7 @@ Route::get('encarrecs/{encarrec}', function ($id) {
 
 Route::get('materials', function () {
 
-	$materials = Material::all();	
+	$materials = Material::all();
 
 	return view('materials',[
     	'materials' => $materials
