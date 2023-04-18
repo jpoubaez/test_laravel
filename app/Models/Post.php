@@ -15,8 +15,9 @@ class Post extends Model
     {
         if ($filtres['cerca'] ?? false) {
             // només tornarné els posts filtrats, no tots
-            $query->where('titol','like', '%'.request('cerca').'%') // fem una consulta SQL
-            ->orWhere('body','like', '%'.request('cerca').'%');
+            $query->where(fn($query)=>
+                $query->where('titol','like', '%'.request('cerca').'%') // fem una consulta SQL
+                ->orWhere('body','like', '%'.request('cerca').'%'));
         }
         /*if ($filtres['categoria'] ?? false) {
             // només tornarné els posts filtrats, no tots
@@ -36,7 +37,7 @@ class Post extends Model
             $query->whereHas('autor', fn($query) => // torna post amb l autor
                 $query->where('username',request('autor')));  // que tingui un username determinat
         }
-       
+
     }
 
     public function categoria()
@@ -48,7 +49,7 @@ class Post extends Model
 
 
     //public function user() // assumeix que la foreign key es user_id
-    public function autor() 
+    public function autor()
     {
         // hasOne, hasMany, belongsTo, belongsToMany
         return $this->belongsTo(User::class, 'user_id'); // li puc forçar el camp on hi ha la foreign key
