@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegistreController;
 use App\Models\Category;
 use App\Models\Dentista;
 use App\Models\Factura;
@@ -31,6 +32,9 @@ Route::get('/', function () {
 Route::get('blog', [PostController::class, 'index']);
 
 Route::get('posts/{post:slug}', [PostController::class, 'mostra']);
+
+Route::get('registre',[RegistreController::class, 'crear']);
+Route::post('registre',[RegistreController::class, 'guardar']);
 
 Route::get('dentistes', function () {
 
