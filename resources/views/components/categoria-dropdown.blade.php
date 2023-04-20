@@ -8,13 +8,13 @@
 
     {{--  aixo esta definit com $slot al fitxer del component --}}
 
-    <x-dropdown-item href="/blog">Totes</x-dropdown-item>
+    <x-dropdown-item href="/blog?{{ http_build_query(request()->except('categoria','page')) }}">Totes</x-dropdown-item>
 
     @foreach ($categories as $categoria)
 
         {{-- <x-dropdown-item href="/categories/{{$categoria->slug}}"  --}}
         <x-dropdown-item
-            href="/blog?categoria={{$categoria->slug}}&{{ http_build_query(request()->except('categoria')) }}"
+            href="/blog?categoria={{$categoria->slug}}&{{ http_build_query(request()->except('categoria','page')) }}"
             :active="isset($categoriaActual) && $categoriaActual->is($categoria)"
         >{{ucwords($categoria->nom)}} </x-dropdown-item>
 
