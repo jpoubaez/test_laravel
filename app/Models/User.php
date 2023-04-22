@@ -21,7 +21,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];*/
-    protected $guarded=[];
+    protected $guarded=[]; // tots fillable perque no n hi ha cap guarded ??
 
 
     /**
@@ -43,6 +43,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /*public function getUsernameAttribute($username) {
+        return ucwords($username);
+    }*/
+    public function setPasswordAttribute($password) {
+        $this->attributes['password'] = bcrypt($password);
+    }
     public function posts()
     {
         // hasOne, hasMany, belongsTo, belongsToMany

@@ -23,6 +23,9 @@ class RegistreController extends Controller
             'password' => 'required|max:255|min:7', // es podria posar ['required','max:255','min:7']
             'email' => 'required|email|max:255' // a més de de tenir forma fdfd@fdfd.xxx
         ]);
+
+        // farem el hash del password amb un getPasswordAttribute a app/Models/User.php
+
         User::create($valors);
         return redirect('/blog');
     }
