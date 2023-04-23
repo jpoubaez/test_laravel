@@ -22,7 +22,7 @@
                     Subscribe for Updates
                 </a>
             </div>
-                
+
             <div>{{-- Aixo ho he afegit jo per a fer un menu --}}
                 <ul style = " overflow: hidden;  background-color: #333;">
                   <li style="float: left;"><a href="/dentistes" style="color: white; text-align: center;  padding: 14px 16px;">Dentistes</a></li>
@@ -65,4 +65,7 @@
             </div>
         </footer>
     </section>
+
+    <x-flash />
+
 </body>
