@@ -19,9 +19,9 @@ class RegistreController extends Controller
 
         $valors=request()->validate([
             'name' => 'required|max:255',
-            'username' => 'required|max:255|min:3',
+            'username' => 'required|max:255|min:3|unique:users,username', // es podria posar ['required','max:255','min:3', Rule::unique('users','username')]
             'password' => 'required|max:255|min:7', // es podria posar ['required','max:255','min:7']
-            'email' => 'required|email|max:255' // a més de de tenir forma fdfd@fdfd.xxx
+            'email' => 'required|email|max:255|unique:users,email' // a més de de tenir forma fdfd@fdfd.xxx
         ]);
 
         // farem el hash del password amb un getPasswordAttribute a app/Models/User.php
