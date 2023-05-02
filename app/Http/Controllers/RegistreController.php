@@ -26,7 +26,10 @@ class RegistreController extends Controller
 
         // farem el hash del password amb un getPasswordAttribute a app/Models/User.php
 
-        User::create($valors);
+        $user = User::create($valors);
+        
+        // ens loggem
+        auth()->login($user);
 
         //session()->flash('exitos','El teu compte s ha creat.');
 

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegistreController;
+use App\Http\Controllers\SessioController;
+
 use App\Models\Category;
 use App\Models\Dentista;
 use App\Models\Factura;
@@ -33,8 +35,9 @@ Route::get('blog', [PostController::class, 'index']);
 
 Route::get('posts/{post:slug}', [PostController::class, 'mostra']);
 
-Route::get('registre',[RegistreController::class, 'crear']);
-Route::post('registre',[RegistreController::class, 'guardar']);
+Route::get('registre',[RegistreController::class, 'crear'])->middleware('guest');
+Route::post('registre',[RegistreController::class, 'guardar'])->middleware('guest');
+Route::post('logout',[SessioController::class, 'destruir']);
 
 Route::get('dentistes', function () {
 
@@ -58,6 +61,7 @@ Route::get('dentistes/{dentista}', function ($id) {
 
 Route::get('afegeix-dentista-post-form', [DentistaprovaController::class, 'index']);
 Route::post('guarda-dentista-form', [DentistaprovaController::class, 'store']);
+
 
 Route::get('factures', function () {
 
