@@ -37,7 +37,11 @@ Route::get('posts/{post:slug}', [PostController::class, 'mostra']);
 
 Route::get('registre',[RegistreController::class, 'crear'])->middleware('guest');
 Route::post('registre',[RegistreController::class, 'guardar'])->middleware('guest');
-Route::post('logout',[SessioController::class, 'destruir']);
+
+Route::get('entrar',[SessioController::class, 'crear'])->middleware('guest');
+Route::post('sessions',[SessioController::class, 'guarda'])->middleware('guest');
+
+Route::post('sortir',[SessioController::class, 'destruir'])->middleware('host');
 
 Route::get('dentistes', function () {
 
