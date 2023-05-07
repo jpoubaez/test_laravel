@@ -19,24 +19,24 @@ class SessioController extends Controller
             'email' => 'required|exists:users,email',
             'password' => 'required'
         ]);
-        // Fa autenticacio i entrem amb l'usuari
-        // torna un missatge
-        if (auth()->attempt($atributs)) {
-            session()->regenerate(); // per evitar que algu faci servir la sessio un altre moment
-            return redirect('blog')->with('success','Bentornat/da!');
+        // Comproba autenticacio
+        if (! auth()->attempt($atributs)) {
+            return back()
+                ->withInput()
+                ->withErrors([
+                    'email' => 'Les creedncials no s han pogut verificar correctament.'
+                ]); // $errors
+            // podem fer tambe
+    //        throw ValidationException::withMessages([
+    //        'email' => 'El correu no s ha pogut verificar correctament.'
+    //        ]); // $errors
+
         }
-        return back()
-            ->withInput()
-            ->withErrors([
-            'email' => 'Les creedncials no s han pogut verificar correctament.'
-        ]); // $errors
-        // podem fer tambe
-//        throw ValidationException::withMessages([
-//        'email' => 'El correu no s ha pogut verificar correctament.'
-//        ]); // $errors
 
+        // entrem amb l'usuari i torna un missatge OK
+        session()->regenerate(); // per evitar que algu faci servir la sessio un altre moment
 
-
+        return redirect('blog')->with('exitos','Bentornat/da!');
     }
     public function destruir() {
         auth()->logout();
