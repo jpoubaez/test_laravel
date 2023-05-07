@@ -52,10 +52,11 @@
                     <div class="space-y-4 lg:text-lg leading-loose">
                         {!! $posts_din->body !!}
                     </div>
+
                     <section class="col-span-8 col-start-5 mt-10 space-y-6">
-                        <x-post-comment />
-                        <x-post-comment />
-                        <x-post-comment />
+                        @foreach($posts_din->comentaris as $comentari)
+                            <x-post-comment :comentari="$comentari" />
+                        @endforeach
                     </section>
                 </div>
             </article>

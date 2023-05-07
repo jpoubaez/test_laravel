@@ -40,13 +40,18 @@ class Post extends Model
 
     }
 
+    public function comentaris()
+    {
+        // hasOne, hasMany, belongsTo, belongsToMany
+        return $this->hasMany(Comentari::class);
+    }
+
     public function categoria()
     {
         // hasOne, hasMany, belongsTo, belongsToMany
         return $this->belongsTo(Category::class);
 
     }
-
 
     //public function user() // assumeix que la foreign key es user_id
     public function autor()
