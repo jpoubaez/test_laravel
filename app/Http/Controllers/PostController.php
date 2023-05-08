@@ -17,7 +17,7 @@ class PostController extends Controller
             'posts' => Post::latest()->filtre(
                 request(['cerca','categoria','autor'])
 //            )->get()
-            )->paginate(4)->withQueryString()
+            )->paginate(6)->withQueryString()
         ]);
     }
 
