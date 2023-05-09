@@ -5,6 +5,7 @@ use App\Models\Post;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegistreController;
 use App\Http\Controllers\SessioController;
+use App\Http\Controllers\PostComentarisController;
 
 use App\Models\Category;
 use App\Models\Dentista;
@@ -34,6 +35,7 @@ Route::get('/', function () {
 Route::get('blog', [PostController::class, 'index']);
 
 Route::get('posts/{post:slug}', [PostController::class, 'mostra']);
+Route::post('posts/{post:slug}/comentaris', [PostComentarisController::class, 'guarda']);
 
 Route::get('registre',[RegistreController::class, 'crear'])->middleware('guest');
 Route::post('registre',[RegistreController::class, 'guardar'])->middleware('guest');
@@ -41,7 +43,7 @@ Route::post('registre',[RegistreController::class, 'guardar'])->middleware('gues
 Route::get('entrar',[SessioController::class, 'crear'])->middleware('guest');
 Route::post('sessions',[SessioController::class, 'guarda'])->middleware('guest');
 
-Route::post('sortir',[SessioController::class, 'destruir'])->middleware('host');
+Route::post('sortir',[SessioController::class, 'destruir'])->middleware('auth');
 
 Route::get('dentistes', function () {
 

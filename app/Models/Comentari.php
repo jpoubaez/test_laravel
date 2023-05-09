@@ -9,6 +9,8 @@ class Comentari extends Model
 {
     use HasFactory;
 
+    //protected $guarded = [];  // els fem tots fillable
+
     public function autor() // Com que el nom de la funcio no es igual al camp, CAL explicitar abaix
     {
         // hasOne, hasMany, belongsTo, belongsToMany

@@ -21,7 +21,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];*/
-    protected $guarded=[]; // tots fillable perque no n hi ha cap guarded ??
+    //protected $guarded=[]; // tots fillable perque no n hi ha cap guarded ??
 
 
     /**

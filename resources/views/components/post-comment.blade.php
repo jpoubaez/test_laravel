@@ -7,7 +7,7 @@
         <div>
             <header class="mb-4">
                 <h3 class="font-bold">{{ $comentari->autor->username }}</h3>
-                <p class="text-xs">Enviat <time>{{ $comentari->created_at }}</time></p>
+                <p class="text-xs">Enviat <time>{{ $comentari->created_at->format('j F, Y, g:i a') }}</time></p>
             </header>
             <p>
                 {{ $comentari->cos }}

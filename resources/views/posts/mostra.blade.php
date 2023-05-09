@@ -54,31 +54,38 @@
                     </div>
 
                     <section class="col-span-8 col-start-5 mt-10 space-y-6">
-                        <x-panell>
-                            <form method="POST" action="#" >
-                                @csrf
+                        @auth()
+                            <x-panell>
+                                <form method="POST" action="/posts/{{ $posts_din->slug }}/comentaris" >
+                                    @csrf
 
-                                <header class="flex items-center">
-                                    <img src="https://i.pravatar.cc/60?u={{}}" alt="" width="40" height="40" class="rounded-full">
-                                    <h2 class="ml-4">Vols participar?</h2>
-                                </header>
+                                    <header class="flex items-center">
+                                        <img src="https://i.pravatar.cc/60?u={{}}" alt="" width="40" height="40" class="rounded-full">
+                                        <h2 class="ml-4">Vols participar?</h2>
+                                    </header>
 
-                                <div class="mt-6">
-                                     <textarea name="cos" class="w-full text-sm focus:outline-none focus:ring" cols="30" rows="10" placeholder="Posa alguna cosa...">
-
+                                    <div class="mt-6">
+                                     <textarea name="cos" class="w-full text-sm focus:outline-none focus:ring"
+                                               rows="5" placeholder="Posa alguna cosa...">
                                      </textarea>
-                                </div>
+                                    </div>
 
-                                <div class="flex justify-end mt-6 pt-6 border-t border-gray-200">
-                                     <button type="submit" class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 rounded-2xl hover:bg-blue-600">Publica</button>
-                                </div>
+                                    <div class="flex justify-end mt-6 pt-6 border-t border-gray-200">
+                                        <button type="submit" class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 rounded-2xl hover:bg-blue-600">Publica</button>
+                                    </div>
 
-                            </form>
-                        </x-panell>
+                                </form>
+                            </x-panell>
+                        @else
+                            <p class="font-semibold">
+                                <a href="/registre" class="hover:underline"> Registra t </a> o <a href="/entrar" class="hover:underline"> Entra  </a> per a deixar un comentari
+                            </p>
+                        @endauth
+
                         @foreach($posts_din->comentaris as $comentari)
                             <x-post-comment :comentari="$comentari" />
                         @endforeach
-                        
+
                     </section>
                 </div>
             </article>
