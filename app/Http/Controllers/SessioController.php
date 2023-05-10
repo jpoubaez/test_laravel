@@ -24,7 +24,7 @@ class SessioController extends Controller
             return back()
                 ->withInput()
                 ->withErrors([
-                    'email' => 'Les creedncials no s han pogut verificar correctament.'
+                    'email' => 'Les credencials no s han pogut verificar correctament.'
                 ]); // $errors
             // podem fer tambe
     //        throw ValidationException::withMessages([
