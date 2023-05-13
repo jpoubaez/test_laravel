@@ -32,6 +32,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('ping', function () {
+    $mailchimp = new \MailchimpMarketing\ApiClient();
+
+    $mailchimp->setConfig([
+        'apiKey' => config('services.mailchimp.key'),
+        'server' => 'us21'
+    ]);
+
+    $response = $mailchimp->lists->addListMember('8877b8ac29',[
+        'email_address' => 'jpou3@xtec.cat',
+        'status' => 'subscribed'
+    ]);
+    ddd($response);
+});
+
 Route::get('blog', [PostController::class, 'index']);
 
 Route::get('posts/{post:slug}', [PostController::class, 'mostra']);
