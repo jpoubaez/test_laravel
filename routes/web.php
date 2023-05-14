@@ -32,7 +32,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('ping', function () {
+Route::post('newsletter', function () {
+    request()->validate(['email' => 'required|email']);
+
     $mailchimp = new \MailchimpMarketing\ApiClient();
 
     $mailchimp->setConfig([
@@ -40,11 +42,18 @@ Route::get('ping', function () {
         'server' => 'us21'
     ]);
 
-    $response = $mailchimp->lists->addListMember('8877b8ac29',[
-        'email_address' => 'jpou3@xtec.cat',
-        'status' => 'subscribed'
-    ]);
-    ddd($response);
+    try {
+        $response = $mailchimp->lists->addListMember('8877b8ac29',[
+            'email_address' => request('email'),
+            'status' => 'subscribed'
+        ]);
+    }
+    catch (\Exception $e) {
+        throw \Illuminate\Validation\ValidationException::withMessages([
+            'email' => 'Aquesta adreça és incorrecta i no es pot afegir a la newsletter!'
+        ]);
+    }
+    return redirect('/blog')->with('exitos','Ara formes part de la nostra newsletter!');
 });
 
 Route::get('blog', [PostController::class, 'index']);
