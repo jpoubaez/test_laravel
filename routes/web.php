@@ -6,6 +6,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegistreController;
 use App\Http\Controllers\SessioController;
 use App\Http\Controllers\PostComentarisController;
+use App\Http\Controllers\NewsletterController;
+
 
 use App\Models\Category;
 use App\Models\Dentista;
@@ -13,8 +15,10 @@ use App\Models\Factura;
 use App\Models\Material;
 use App\Models\Encarrec;
 use App\Models\User;
+use App\Services\Newsletter;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use App\Http\Controllers\DentistaprovaController;
+use Illuminate\Validation\ValidationException;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,34 +36,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('newsletter', function () {
-    request()->validate(['email' => 'required|email']);
 
-    $mailchimp = new \MailchimpMarketing\ApiClient();
-
-    $mailchimp->setConfig([
-        'apiKey' => config('services.mailchimp.key'),
-        'server' => 'us21'
-    ]);
-
-    try {
-        $response = $mailchimp->lists->addListMember('8877b8ac29',[
-            'email_address' => request('email'),
-            'status' => 'subscribed'
-        ]);
-    }
-    catch (\Exception $e) {
-        throw \Illuminate\Validation\ValidationException::withMessages([
-            'email' => 'Aquesta adreça és incorrecta i no es pot afegir a la newsletter!'
-        ]);
-    }
-    return redirect('/blog')->with('exitos','Ara formes part de la nostra newsletter!');
-});
-
-Route::get('blog', [PostController::class, 'index']);
+Route::get('blog', [PostController::class, 'index'])->name('blog'); // guardo el nom de la ruta, tambe
 
 Route::get('posts/{post:slug}', [PostController::class, 'mostra']);
 Route::post('posts/{post:slug}/comentaris', [PostComentarisController::class, 'guarda']);
+
+Route::post('newsletter', NewsletterController::class); // no dic funció que crido del controlador perquè he definit __invoke()
 
 Route::get('registre',[RegistreController::class, 'crear'])->middleware('guest');
 Route::post('registre',[RegistreController::class, 'guardar'])->middleware('guest');
