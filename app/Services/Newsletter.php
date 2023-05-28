@@ -3,7 +3,7 @@
 
     use MailchimpMarketing\ApiClient;
 
-    class Newsletter
+    class Newsletter implements NewsletterInt
     {
         public function subscriure(string $email, string $llista = null) // triem la llista on guardarem el correu
         {
@@ -16,15 +16,11 @@
         }
 
         protected function client()
-        {
-            $mailchimp = new ApiClient();
-
-            $mailchimp->setConfig([
+        { 
+            return (new ApiClient())->setConfig([
                 'apiKey' => config('services.mailchimp.key'),
                 'server' => 'us21'
             ]);
-            return($mailchimp);
-
         }
     }
 ?>
