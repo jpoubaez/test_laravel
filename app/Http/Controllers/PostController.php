@@ -28,4 +28,9 @@ class PostController extends Controller
         ]);
     }
 
+    public function afegir_post(Post $post)
+    {
+        return view('posts.afegir');
+    }
+
 }
