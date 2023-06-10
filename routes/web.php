@@ -53,6 +53,8 @@ Route::post('sessions',[SessioController::class, 'guarda'])->middleware('guest')
 Route::post('sortir',[SessioController::class, 'destruir'])->middleware('auth');
 
 Route::get('admin/posts/afegir',[PostController::class, 'afegir_post'])->middleware('admin');
+Route::post('admin/posts',[PostController::class, 'guardar_post'])->middleware('admin');
+
 
 Route::get('dentistes', function () {
 

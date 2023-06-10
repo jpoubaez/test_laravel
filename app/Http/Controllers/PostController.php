@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+
+
 use App\Models\Post;
 use App\Models\Category;
 
@@ -31,6 +34,23 @@ class PostController extends Controller
     public function afegir_post(Post $post)
     {
         return view('posts.afegir');
+    }
+
+    public function guardar_post(Post $post)
+    {
+        //ddd(request()->all());
+        $atributs = request()->validate([
+            'titol' => 'required',
+            'slug' => ['required', Rule::unique('posts','slug')],
+            'excerpt' => 'required',
+            'body' => 'required',
+            'categoria_id' => ['required', Rule::exists('categories','id')] // numero categoria existent a la taula categories
+        ]);
+
+        $atributs['user_id'] = auth()->id();
+        Post::create($atributs);
+
+        return redirect('/blog');
     }
 
 }
