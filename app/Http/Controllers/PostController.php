@@ -38,9 +38,10 @@ class PostController extends Controller
 
     public function guardar_post(Post $post)
     {
-        //ddd(request()->all());
+        
         $atributs = request()->validate([
             'titol' => 'required',
+            'thumbnail' => 'required|image',
             'slug' => ['required', Rule::unique('posts','slug')],
             'excerpt' => 'required',
             'body' => 'required',
@@ -48,6 +49,8 @@ class PostController extends Controller
         ]);
 
         $atributs['user_id'] = auth()->id();
+        $atributs['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+        
         Post::create($atributs);
 
         return redirect('/blog');

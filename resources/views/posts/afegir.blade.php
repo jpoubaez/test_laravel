@@ -1,15 +1,18 @@
 
 <x-layout>
-	<section class="px-6 py-8">
-		<x-panell class="max-w-sm mx-auto">
-			<form method="POST" action="/admin/posts">
+	<section class="py-8 max-w-md mx-auto">
+		<h1 class="text-lg font-bold mb-4">
+			Publicar nou post
+		</h1>
+		<x-panell>
+			<form method="POST" action="/admin/posts" enctype="multipart/form-data">
 				@csrf
 
 				<div class="mb-6">
 					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="title">
 						Titol
 					</label>
-					<input class="border border/text-gray-400 p-2 w-full" 
+					<input class="border border-gray-400 p-2 w-full" 
 						type="text" name="titol" id="titol" value="{{ old('titol') }}" required>
 					@error('titol')
 						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -20,12 +23,23 @@
 					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="slug">
 						Slug
 					</label>
-					<input class="border border/text-gray-400 p-2 w-full" 
+					<input class="border border-gray-400 p-2 w-full" 
 						type="text" name="slug" id="slug" value="{{ old('slug') }}" required>
 					@error('slug')
 						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 					@enderror
 				</div>	
+
+				<div class="mb-6">
+					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="thumbnail">
+						thumbnail
+					</label>
+					<input class="border border-gray-400 p-2 w-full" 
+						type="file" name="thumbnail" id="thumbnail" required>
+					@error('thumbnail')
+						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+					@enderror
+				</div>
 
 				<div class="mb-6">
 					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="excerpt">
