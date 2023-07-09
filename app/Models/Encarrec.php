@@ -10,6 +10,8 @@ class Encarrec extends Model
     use HasFactory;
     protected $table = 'encarrecs';
 
+    // Falten funcions pacient() albara() 
+
     public function dentista()
     {
         // hasOne, hasMany, belongsTo, belongsToMany
@@ -17,10 +19,17 @@ class Encarrec extends Model
 
     }
 
-    public function material()
+    public function pacient()
     {
         // hasOne, hasMany, belongsTo, belongsToMany
-        return $this->belongsTo(Material::class);
+        return $this->belongsTo(Pacient::class);
+
+    }
+
+    public function albara()
+    {
+        // hasOne, hasMany, belongsTo, belongsToMany
+        return $this->belongsTo(Albara::class);
 
     }
 }

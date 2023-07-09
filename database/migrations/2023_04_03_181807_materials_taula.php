@@ -15,9 +15,10 @@ class MaterialsTaula extends Migration
     {
         //
         Schema::create('materials', function (Blueprint $table) {
-            $table->id();
+            $table->id()->unique();
             $table->string('nom');
-            $table->string('preu_unitari');
+            $table->float('preu_unitari',6,2);
+            $table->timestamps();
         });
     }
 

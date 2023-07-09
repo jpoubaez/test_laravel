@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class FacturesTaula extends Migration
+class AlbaransTaula extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,13 @@ class FacturesTaula extends Migration
     public function up()
     {
         //
-        Schema::create('factures', function (Blueprint $table) {
+        Schema::create('albarans', function (Blueprint $table) {
             $table->id()->unique();
-            $table->integer('tipus');
             $table->timestamp('data_generacio');
-            $table->timestamp('data_cobrament')->nullable();
-            $table->float('total_a_cobrar',7,2);
-            $table->boolean('cobrada');
+            $table->timestamp('data_entrega')->nullable();
+            $table->float('total',6,2);
+            $table->boolean('entregat');
+            $table->foreignId('factura_id')->nullable()->references('id')->on('factures')->constrained();
             $table->timestamps();
         });
     }
@@ -28,7 +28,7 @@ class FacturesTaula extends Migration
     /**
      * Reverse the migrations.
      *
-     * @return void 
+     * @return void
      */
     public function down()
     {

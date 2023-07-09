@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class EncarrecsTaula extends Migration
+class PacientsTaula extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class EncarrecsTaula extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('encarrecs', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('dentista_id');
-            $table->foreignId('material_id');
-            $table->string('descripcio');
+        Schema::create('pacients', function (Blueprint $table) {
+            $table->id()->unique();
+            $table->string('nom')->nullable();
+            $table->string('cognoms');
+            $table->timestamps();
         });
     }
 

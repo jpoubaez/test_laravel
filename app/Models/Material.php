@@ -10,10 +10,11 @@ class Material extends Model
     use HasFactory;
     protected $table = 'materials';
 
+    // Falten funcions encarrecs()  
+
     public function encarrecs()
     {
         // hasOne, hasMany, belongsTo, belongsToMany
-        return $this->hasMany(Encarrec::class);
-
+        return $this->belongsToMany(Material_Encarrec::class);
     }
 }

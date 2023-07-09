@@ -10,10 +10,12 @@ class Factura extends Model
     use HasFactory;
     protected $table = 'factures';
 
-    public function encarrec()
+    // Falta funcio albarans() 
+
+    public function albarans()
     {
         // hasOne, hasMany, belongsTo, belongsToMany
-        return $this->belongsTo(Encarrec::class);
+        return $this->hasMany(Albara::class);
 
     }
 }

@@ -14,13 +14,15 @@ class DentistesTaula extends Migration
     public function up()
     {
         Schema::create('dentistes', function (Blueprint $table) {
-            $table->id();
-            $table->string('nom');
-            $table->string('adresa');
-            $table->string('codipostal');
-            $table->string('ciutat');
+            $table->id()->unique();
+            $table->string('nom')->nullable();
+            $table->string('cognoms');
+            $table->string('clinica');
+            $table->string('adresa')->nullable();
+            $table->integer('codipostal')->nullable();
+            $table->string('ciutat')->nullable();
             $table->string('NIF');
-            $table->string('numcolegiat');
+            $table->integer('numcolegiat')->unique();
             $table->timestamps();
         });
     }

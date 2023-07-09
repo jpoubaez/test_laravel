@@ -12,6 +12,8 @@ class DentistaprovaController extends Controller
     {
         $Dentista = new Dentista;
         $Dentista->nom = $request->nom;
+        $Dentista->nom = $request->cognoms;
+        $Dentista->nom = $request->clinica;
         $Dentista->adresa = $request->adresa;
         $Dentista->codipostal = $request->codipostal;
         $Dentista->ciutat = $request->ciutat;
