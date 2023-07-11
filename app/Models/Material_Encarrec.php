@@ -14,13 +14,13 @@ class Material_Encarrec extends Model
     public function encarrec()
     {
         // hasOne, hasMany, belongsTo, belongsToMany
-        return $this->belongsTo(Encarrec::class);
+        return $this->belongsTo(Encarrec::class,'encarrecs_id');
     }
 
     public function material()
     {
         // hasOne, hasMany, belongsTo, belongsToMany
-        return $this->belongsTo(Material::class);
+        return $this->belongsTo(Material::class,'materials_id');
     }
 
 }

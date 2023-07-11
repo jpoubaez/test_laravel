@@ -15,6 +15,6 @@ class Pacient extends Model
     public function encarrecs()
     {
         // hasOne, hasMany, belongsTo, belongsToMany
-        return $this->hasMany(Encarrec::class);
+        return $this->hasMany(Encarrec::class,'pacient_id');
     }
 }

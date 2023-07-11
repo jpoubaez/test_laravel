@@ -32,4 +32,11 @@ class Encarrec extends Model
         return $this->belongsTo(Albara::class);
 
     }
+
+    public function material_encarrec()
+    {
+        // hasOne, hasMany, belongsTo, belongsToMany
+        return $this->hasMany(Material_Encarrec::class,'encarrecs_id');
+
+    }
 }

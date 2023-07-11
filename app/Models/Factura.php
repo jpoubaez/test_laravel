@@ -15,7 +15,7 @@ class Factura extends Model
     public function albarans()
     {
         // hasOne, hasMany, belongsTo, belongsToMany
-        return $this->hasMany(Albara::class);
+        return $this->hasMany(Albara::class,'factura_id');
 
     }
 }

@@ -20,7 +20,7 @@ class Albara extends Model
     public function encarrec()
     {
         // hasOne, hasMany, belongsTo, belongsToMany
-        return $this->hasOne(Encarrec::class);
+        return $this->hasOne(Encarrec::class,'albara_id');
 
     }
 }

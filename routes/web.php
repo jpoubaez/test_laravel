@@ -36,7 +36,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('blog', [PostController::class, 'index'])->name('blog'); // guardo el nom de la ruta, tambe
 
 Route::get('posts/{post:slug}', [PostController::class, 'mostra']);
@@ -55,87 +54,24 @@ Route::post('sortir',[SessioController::class, 'destruir'])->middleware('auth');
 Route::get('admin/posts/afegir',[PostController::class, 'afegir_post'])->middleware('admin');
 Route::post('admin/posts',[PostController::class, 'guardar_post'])->middleware('admin');
 
+/* ** Controladors epou **  */
 
-Route::get('dentistes', function () {
+Route::get('/', [DentistaprovaController::class, 'index']); // guardo el nom de la ruta, tambe
 
-	$dentistes = Dentista::all();
-
-	return view('dentistes',[
-    	'dentistes' => $dentistes
-    ]);
-});
-
-Route::get('dentistes/{dentista}', function ($id) {
-	// Troba un dentista que té un id i el passa a una vista que es diu dentista
-
-	$dentista = Dentista::findOrFail($id);
-
-	return view('dentista',[
-		'dentista_din' => $dentista
-	]);
-
-});
+Route::get('dentistes', [DentistaprovaController::class, 'index'])->name('dentistes'); // guardo el nom de la ruta, tambe
+Route::get('dentista/{dentista:numcolegiat}', [DentistaprovaController::class, 'mostra']); // guardo el nom de la ruta, tambe
 
 Route::get('afegeix-dentista-post-form', [DentistaprovaController::class, 'index']);
 Route::post('guarda-dentista-form', [DentistaprovaController::class, 'store']);
 
+Route::get('factures', [FacturaController::class, 'index'])->name('factures'); // guardo el nom de la ruta, tambe
+Route::get('factures/{factura}', [FacturaController::class, 'mostra']);
 
-Route::get('factures', function () {
+Route::get('encarrecs', [EncarrecController::class, 'index'])->name('encarrecs'); // guardo el nom de la ruta, tambe
+Route::get('encarrecs/{encarrec>:id}', [EncarrecController::class, 'mostra']);
 
-	$factures = Factura::all();
+Route::get('materials', [MaterialController::class, 'index'])->name('materials'); // guardo el nom de la ruta, tambe
+Route::get('materials/{material}', [MaterialController::class, 'mostra']);
 
-	return view('factures',[
-    	'factures' => $factures
-    ]);
-});
-
-Route::get('factures/{factura}', function ($id) {
-	// Troba una factura que té un id i el passa a una vista que es diu factura
-
-	$factura = Factura::findOrFail($id);
-
-	return view('factura',[
-		'factura_din' => $factura
-	]);
-
-});
-
-Route::get('encarrecs', function () {
-
-	$encarrecs = Encarrec::all();
-
-	return view('encarrecs',[
-    	'encarrecs' => $encarrecs
-    ]);
-});
-
-Route::get('encarrecs/{encarrec}', function ($id) {
-	// Troba un encarrec que té un id i el passa a una vista que es diu encarrec
-
-	$encarrec = Encarrec::findOrFail($id);
-
-	return view('encarrec',[
-		'encarrec_din' => $encarrec
-	]);
-
-});
-
-Route::get('materials', function () {
-
-	$materials = Material::all();
-
-	return view('materials',[
-    	'materials' => $materials
-    ]);
-});
-
-Route::get('materials/{material}', function ($id) {
-	// Troba un material que té un id i el passa a una vista que es diu material
-
-	$material = Material::findOrFail($id);
-
-	return view('material',[
-		'material_din' => $material
-	]);
-
-});
+Route::get('pacients', [PacientController::class, 'index'])->name('pacients'); // guardo el nom de la ruta, tambe
+Route::get('pacients/{pacient}', [PacientController::class, 'mostra']); 

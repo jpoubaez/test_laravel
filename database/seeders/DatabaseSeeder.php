@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Post::factory(20)->create();
 
+        Dentista::factory(20)->create();
         $dentistes = Dentista::factory(2)->create();
         Pacient::factory(1)->create();
         $materials = Material::factory(4)->create();

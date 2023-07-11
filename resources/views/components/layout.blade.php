@@ -1,6 +1,6 @@
 <!doctype html>
 
-<title>Laravel From Scratch Blog</title>
+<title>Laboratori Eulàlia Pou</title>
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
         <nav class="md:flex md:justify-between md:items-center">
             <div>
                 <a href="/">
-                    <img src="/images/logo.svg" alt="Laracasts Logo" width="165" height="16">
+                    <img src="/images/dental-technology-gb61834956_322.jpg" alt="Imatge Dents" width="165" height="16">
                 </a>
             </div>
 
@@ -37,16 +37,16 @@
                 <a href="#newsletter" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Subscriu-te per estar al dia
                 </a>
-            </div>
-
-            <div>{{-- Aixo ho he afegit jo per a fer un menu --}}
-                <ul style = " overflow: hidden;  background-color: #333;">
-                  <li style="float: left;"><a href="/dentistes" style="color: white; text-align: center;  padding: 14px 16px;">Dentistes</a></li>
-                  <li style="float: left;"><a href="/encarrecs" style="color: white; text-align: center;  padding: 14px 16px;">Encarrecs</a></li>
-                  <li style="float: left;"><a href="/factures" style="color: white; text-align: center;  padding: 14px 16px;">Factures</a></li>
-                  <li style="float: left;"><a href="/materials" style="color: white; text-align: center;  padding: 14px 16px;">Materials</a></li>
-                  <li style="float: left;"><a href="/blog" style="color: white; text-align: center;  padding: 14px 16px;">Posts</a></li>
-                  <li style="float: left;"><a href="/categories" style="color: white; text-align: center;  padding: 14px 16px;">Categories</a></li>
+                <h1 class="text-4xl m-6 ">
+                    Laboratori <span class="text-blue-500 ">Eulàlia Pou</span>
+                </h1>
+                <ul >
+                    <li style="float: left;"><a href="/dentistes" class="text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Dentistes</a></li>
+                    <li style="float: left;"><a href="/encarrecs" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Encarrecs</a></li>
+                    <li style="float: left;"><a href="/factures" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Factures</a></li>
+                    <li style="float: left;"><a href="/materials" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Materials</a></li>
+                    <li style="float: left;"><a href="/pacients" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Pacients</a></li>
+                    <li style="float: left;"><a href="/blog" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Posts</a></li>
                 </ul>
             </div>
         </nav>
@@ -54,11 +54,11 @@
         {{ $slot }}
 
         <footer id="newsletter" class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
-            <img src="/images/lary-newsletter-icon.svg" alt="" class="mx-auto -mb-6" style="width: 145px;">
-            <h5 class="text-3xl">Stay in touch with the latest posts</h5>
-            <p class="text-sm mt-3">Promise to keep the inbox clean. No bugs.</p>
+            <img src="/images/radar-dish-ge5b8903b5_320.jpg" alt="imatge satelit" class="mx-auto -mb-120" style="width: 145px;">
+            <h5 class="text-3xl  mt-3">Aplicació de gestió del Laboratori Eulàlia Pou</h5>
+            <p class="text-sm mt-3">Fet per en Joan Pou</p>
 
-            <div class="mt-10">
+            {{-- <div class="mt-10">
                 <div class="relative inline-block mx-auto lg:bg-gray-200 rounded-full">
 
                     <form method="POST" action="/newsletter" class="lg:flex text-sm">
@@ -84,8 +84,8 @@
                             Subscriu-te
                         </button>
                     </form>
-                </div>
-            </div>
+                </div> 
+            </div> --}}
         </footer>
     </section>
 

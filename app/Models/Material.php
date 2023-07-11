@@ -12,9 +12,9 @@ class Material extends Model
 
     // Falten funcions encarrecs()  
 
-    public function encarrecs()
+    public function materials_encarrecs()
     {
         // hasOne, hasMany, belongsTo, belongsToMany
-        return $this->belongsToMany(Material_Encarrec::class);
+        return $this->hasMany(Material_Encarrec::class,'material_id');
     }
 }
