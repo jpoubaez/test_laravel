@@ -60,6 +60,8 @@ Route::get('/', [DentistaprovaController::class, 'index']); // guardo el nom de 
 
 Route::get('dentistes', [DentistaprovaController::class, 'index'])->name('dentistes'); // guardo el nom de la ruta, tambe
 Route::get('dentista/{dentista:numcolegiat}', [DentistaprovaController::class, 'mostra']); // guardo el nom de la ruta, tambe
+Route::get('admin/dentista/afegir', [DentistaprovaController::class, 'afegir_dentista']); // algun dia ->middleware('admin');
+Route::post('admin/dentistes',[DentistaprovaController::class, 'guardar_dentista']); // algun dia ->middleware('admin');
 
 Route::get('afegeix-dentista-post-form', [DentistaprovaController::class, 'index']);
 Route::post('guarda-dentista-form', [DentistaprovaController::class, 'store']);

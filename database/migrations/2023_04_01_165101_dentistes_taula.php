@@ -23,6 +23,7 @@ class DentistesTaula extends Migration
             $table->string('ciutat')->nullable();
             $table->string('NIF');
             $table->integer('numcolegiat')->unique();
+            $table->string('fotodentista')->nullable();
             $table->timestamps();
         });
     }

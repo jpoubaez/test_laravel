@@ -9,6 +9,7 @@ class Dentista extends Model
 {
     use HasFactory;
     protected $table = 'dentistes';
+    protected $guarded = []; // els fem tots fillable
 
     // per a fer cerques de dentistes
     public function scopeFiltre($query, array $filtres)

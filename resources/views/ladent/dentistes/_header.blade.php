@@ -25,9 +25,9 @@
                                value="{{ request('cerca') }}">
                     </form>
                     <ul  style = "overflow: hidden; margin-left: 20px;" class="rounded-xl px-4 py-2 bg-blue-100 ">
-                        <li style="float: left;"><a href="/dentistes/afegir" class=" text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Afegir</a></li>
-                        <li style="float: left;"><a href="/dentistes/editar" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Editar</a></li>
-                        <li style="float: left;"><a href="/dentistes/esborrar" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Esborrar</a></li>
+                        <li style="float: left;"><a href="admin/dentista/afegir" class=" text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Afegir</a></li>
+                        <li style="float: left;"><a href="admin/dentista/editar" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Editar</a></li>
+                        <li style="float: left;"><a href="admin/dentista/esborrar" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Esborrar</a></li>
                     </ul>
 
                 </div>

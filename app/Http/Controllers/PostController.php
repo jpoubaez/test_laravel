@@ -14,8 +14,6 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest();
-
         return view('posts.index',[
             'posts' => Post::latest()->filtre(
                 request(['cerca','categoria','autor'])

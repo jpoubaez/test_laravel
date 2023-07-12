@@ -1,13 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+
 use App\Models\Dentista;
 class DentistaprovaController extends Controller
 {
     public function index()
     {
        // return view('afegeix-dentista-post-form');
-
 
         return view('ladent.dentistes.index',[
             'dentistes' => Dentista::latest()->filtre(
@@ -23,39 +24,31 @@ class DentistaprovaController extends Controller
         ]);
     }
 
+    public function afegir_dentista(Dentista $dentista)
+    {
+        return view('ladent.dentistes.afegir');
+    }
 
     public function guardar_dentista(Dentista $dentista)
     {
-        
+        //$atributs = request()->all();
+       
         $atributs = request()->validate([
-            'titol' => 'required',
-            'thumbnail' => 'required|image',
-            'slug' => ['required', Rule::unique('posts','slug')],
-            'excerpt' => 'required',
-            'body' => 'required',
-            'categoria_id' => ['required', Rule::exists('categories','id')] // numero categoria existent a la taula categories
+            'cognoms' => 'required',
+            'fotodentista' => 'image',
+            'clinica' => 'required',
+            'NIF' => 'required',
+            'numcolegiat' => 'required|numeric|unique:dentistes'
         ]);
 
-        $atributs['user_id'] = auth()->id();
-        $atributs['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+
+       if (isset($atributs['fotodentista'])) {
+            $atributs['fotodentista'] = request()->file('fotodentista')->store('thumbnails');
+        }
         
-        Dentista::create($atributs);
+        $noudentista=Dentista::create($atributs);
+        $retorna='/dentista/'.$noudentista->numcolegiat;
 
-        return redirect('/dentistes');
+        return redirect($retorna)->with('exitos','El dentista s ha creat.');
     }
-
-    /*public function store(Request $request)
-    {
-        $Dentista = new Dentista;
-        $Dentista->nom = $request->nom;
-        $Dentista->cognoms = $request->cognoms;
-        $Dentista->clinica = $request->clinica;
-        $Dentista->adresa = $request->adresa;
-        $Dentista->codipostal = $request->codipostal;
-        $Dentista->ciutat = $request->ciutat;
-        $Dentista->NIF = $request->NIF;
-        $Dentista->numcolegiat = $request->numcolegiat;        
-        $Dentista->save();
-        return redirect('afegeix-dentista-post-form')->with('status', 'S ha afegit un dentista nou');
-    }*/
 }

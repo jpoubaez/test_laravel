@@ -2,95 +2,115 @@
 <x-layout>
 	<section class="py-8 max-w-md mx-auto">
 		<h1 class="text-lg font-bold mb-4">
-			Publicar nou post
+			Crear un nou dentista
 		</h1>
 		<x-panell>
-			<form method="POST" action="/admin/posts" enctype="multipart/form-data">
+			<form method="POST" action="/admin/dentistes" enctype="multipart/form-data">
 				@csrf
 
 				<div class="mb-6">
-					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="title">
-						Titol
+					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="nom">
+						Nom
 					</label>
 					<input class="border border-gray-400 p-2 w-full" 
-						type="text" name="titol" id="titol" value="{{ old('titol') }}" required>
-					@error('titol')
+						type="text" name="nom" id="nom" value="{{ old('nom') }}" >
+					@error('nom')
 						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 					@enderror
 				</div>	
 
 				<div class="mb-6">
-					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="slug">
-						Slug
+					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="cognoms">
+						Cognoms
 					</label>
 					<input class="border border-gray-400 p-2 w-full" 
-						type="text" name="slug" id="slug" value="{{ old('slug') }}" required>
-					@error('slug')
+						type="text" name="cognoms" id="cognoms" value="{{ old('cognoms') }}" required>
+					@error('cognoms')
 						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 					@enderror
 				</div>	
 
 				<div class="mb-6">
-					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="thumbnail">
-						thumbnail
+					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="clinica">
+						Clínica
 					</label>
 					<input class="border border-gray-400 p-2 w-full" 
-						type="file" name="thumbnail" id="thumbnail" required>
-					@error('thumbnail')
+						type="text" name="clinica" id="clinica" value="{{ old('clinica') }}" required>
+					@error('clinica')
+						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+					@enderror
+				</div>	
+
+				<div class="mb-6">
+					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="fotodentista">
+						Foto del dentista/Clínica
+					</label>
+					<input class="border border-gray-400 p-2 w-full" 
+						type="file" name="fotodentista" id="fotodentista" >
+					@error('fotodentista')
 						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 					@enderror
 				</div>
 
 				<div class="mb-6">
-					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="excerpt">
-						Excerpt
+					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="adresa">
+						Adreça
 					</label>
-					<textarea class="border border-gray-400 p-2 w-full" 
-						name="excerpt" id="excerpt" required>
-						{{ old('excerpt') }}
-					</textarea>
-
-					@error('excerpt')
+					<input class="border border-gray-400 p-2 w-full" 
+						type="text" name="adresa" id="adresa" >
+					@error('adresa')
 						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 					@enderror
 				</div>
 
-				<div class="mb-6">
-					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="title">
-						Body
+				<div class="lg:grid lg:grid-cols-4 gap-5 mb-6" >
+					<div class="col-span-3">
+						<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="ciutat">
+							Ciutat
+						</label>
+						<input class="border  border-gray-400 p-2 w-full" 
+							type="text" name="ciutat" id="ciutat" value="{{ old('ciutat') }}" >
+						@error('ciutat')
+							<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+						@enderror
+					</div>	
+					<div>
+					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="codipostal">
+						Codi Postal
 					</label>
-					<textarea class="border border-gray-400 p-2 w-full" 
-						name="body" id="body" required>
-						{{ old('body') }}
-					</textarea>
-
-					@error('body')
+					<input class="border  border-gray-400 p-2 w-full" 
+						type="text" name="codipostal" id="codipostal" value="{{ old('codipostal') }}" >
+					@error('codipostal')
 						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 					@enderror
-				</div>
+					</div>	
+				</div>	
 
-				<div class="mb-6">
-					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="categoria">
-						Categoria
-					</label>
-					<select name="categoria_id" id="categoria_id">
-						@php
-							$categories = \App\Models\Category::all();
-						@endphp
-						@foreach ($categories as $categoria)
-							<option 
-									value="{{ $categoria->id }}" 
-									{{ old('categoria_id') == $categoria->id ? 'selected' : '' }} 
-							>{{ ucwords($categoria->nom) }}</option>
-						@endforeach
-					</select>
+				<div class="lg:grid lg:grid-cols-2 gap-20 mb-6" >
+					<div>
+						<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="NIF">
+							NIF
+						</label>
+						<input class="border border-gray-400 p-2 w-full" 
+							type="text" name="NIF" id="NIF" value="{{ old('NIF') }}" required>
+						@error('NIF')
+							<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+						@enderror
+					</div>	
+					<div>
+						<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="numcolegiat">
+							Número de Col·legiat
+						</label>
+						<input class="border border-gray-400 p-2 w-full" 
+							type="text" name="numcolegiat" id="numcolegiat" value="{{ old('numcolegiat') }}" required>
+						@error('numcolegiat')
+							<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+						@enderror
+					</div>	
+				</div>	
 
-					@error('categoria_id')
-						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-					@enderror
-				</div>
 
-				<x-submit-button>Publica</x-submit-button>
+				<x-submit-button>Guarda</x-submit-button>
 
 			</form>
 		</x-panell>

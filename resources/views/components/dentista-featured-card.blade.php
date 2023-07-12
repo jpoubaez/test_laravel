@@ -3,16 +3,13 @@
                 class="transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">
                 <div class="py-6 px-5 lg:flex">
                     <div class="flex-1 lg:mr-8">
-                        {{-- Pendent!!! --}}
-                        <img src="/storage/{{ $dentista->clinica }}" alt="Dentista foto logo" class="rounded-xl">
+                        <img src="/storage/{{ $dentista->fotodentista }}" alt="Dentista foto logo" class="rounded-xl">
                     </div>
 
                     <div class="flex-1 flex flex-col justify-between">
                         <header class="mt-8 lg:mt-0">
                             <div class="space-x-2">
-                                <a href="/dentistes?clinica={{$dentista->clinica}}"
-                                   class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
-                                   style="font-size: 10px">{{ $dentista->clinica }}</a>
+                                <x-clinica-button :clinica="$dentista->clinica" />
                             </div>
 
                             <div class="mt-4">

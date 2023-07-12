@@ -3,14 +3,14 @@
                     {{ $attributes->merge(['class'=>'transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl']) }}>
                     <div class="py-6 px-5">
                         <div>
-                            <img src="/storage/{{ $dentista->clinica }}" alt="Dentista foto logo" class="rounded-xl">
+                            <img src="/storage/{{ $dentista->fotodentista }}" alt="Dentista foto logo" class="rounded-xl">
                         </div>
 
                         <div class="mt-8 flex flex-col justify-between flex-1">
                             <header>
-                                {{-- <div class="space-x-2">
-                                    <x-categoria-button :categoria="$post->categoria" />
-                                </div> --}}
+                                <div class="space-x-2">
+                                    <x-clinica-button :clinica="$dentista->clinica" />
+                                </div> 
 
                                 <div class="mt-4">
                                     <h1 class="text-xl">
