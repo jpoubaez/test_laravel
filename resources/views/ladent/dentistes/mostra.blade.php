@@ -9,14 +9,7 @@
                     <img src="/storage/{{ $dentista->fotodentista }}" alt="" class="rounded-xl">
 
                     
-                    <div class="flex items-center lg:justify-center text-sm mt-4">
-                        <img src="/images/lary-avatar.svg" alt="Lary avatar">
-                        <div class="ml-3 text-left">
-                            <h5 class="font-bold">
-                                {{-- <a href="/blog?autor={{ $dentista->autor->username }}">{{ $dentista->autor->name }}</a> --}}
-                            </h5>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <div class="col-span-8">
@@ -40,7 +33,12 @@
                             <x-clinica-button :clinica="$dentista->clinica" />
                         </div>
                     </div>
-
+                    <div class="relative flex lg:inline-flex items-center ">
+                        <ul  style = "overflow: hidden; margin-left: 20px;" class="rounded-xl px-4 py-2 bg-blue-100 ">
+                            <li style="float: left;"><a href="/admin/dentista/editar/{{ $dentista->id }}" class=" text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Editar</a></li>
+                            <li style="float: left;"><a href="/admin/dentista/esborrar/{{ $dentista->id }}" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Esborrar</a></li>
+                        </ul>
+                    </div>
                     <h1 class="font-bold text-3xl lg:text-4xl mb-10">
                         {{ $dentista->nom }} {!! $dentista->cognoms !!}
                     </h1>

@@ -30,20 +30,20 @@
 
                 @else
                     <a href="/registre" class="text-xs font-bold uppercase">Registrar</a>
-                    <a href="/entrar" class="ml-6 text-xs font-bold uppercase">Entrar</a>
+                    <a href="/entrar" class="ml-2 text-xs font-bold uppercase">Entrar</a>
                 @endauth
 
 
-                <a href="#newsletter" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+                <a href="#newsletter" class="bg-blue-500 ml-2 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Subscriu-te per estar al dia
                 </a>
-                <h1 class="text-4xl m-6 ">
+                <h1 class="text-3xl m-6 ">
                     Laboratori <span class="text-blue-500 ">Eulàlia Pou</span>
                 </h1>
                 <ul >
                     <li style="float: left;"><a href="/dentistes" class="text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Dentistes</a></li>
-                    <li style="float: left;"><a href="/encarrecs" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Encarrecs</a></li>
-                    <li style="float: left;"><a href="/factures" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Factures</a></li>
+                    <li style="float: left;"><a href="/encarrecs" class="ml-4 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Encarrecs</a></li>
+                    <li style="float: left;"><a href="/factures" class="ml-4 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Factures</a></li>
                     <li style="float: left;"><a href="/materials" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Materials</a></li>
                     <li style="float: left;"><a href="/pacients" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Pacients</a></li>
                     <li style="float: left;"><a href="/blog" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Posts</a></li>

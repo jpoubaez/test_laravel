@@ -2,10 +2,10 @@
 <x-layout>
 	<section class="py-8 max-w-md mx-auto">
 		<h1 class="text-lg font-bold mb-4">
-			Crear un nou dentista
+			Editar un dentista
 		</h1>
 		<x-panell>
-			<form method="POST" action="/admin/dentistes" enctype="multipart/form-data">
+			<form method="POST" action="/admin/actualitzar/{{ $dentista->id }}" enctype="multipart/form-data">
 				@csrf
 
 				<div class="mb-6">
@@ -13,7 +13,7 @@
 						Nom
 					</label>
 					<input class="border border-gray-400 p-2 w-full" 
-						type="text" name="nom" id="nom" value="{{ old('nom') }}" >
+						type="text" name="nom" id="nom" value="{{ $dentista->nom }}" >
 					@error('nom')
 						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 					@enderror
@@ -24,7 +24,7 @@
 						Cognoms
 					</label>
 					<input class="border border-gray-400 p-2 w-full" 
-						type="text" name="cognoms" id="cognoms" value="{{ old('cognoms') }}" required>
+						type="text" name="cognoms" id="cognoms" value="{{ $dentista->cognoms }}" required>
 					@error('cognoms')
 						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 					@enderror
@@ -35,13 +35,14 @@
 						Clínica
 					</label>
 					<input class="border border-gray-400 p-2 w-full" 
-						type="text" name="clinica" id="clinica" value="{{ old('clinica') }}" required>
+						type="text" name="clinica" id="clinica" value="{{ $dentista->clinica }}" required>
 					@error('clinica')
 						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 					@enderror
 				</div>	
 
 				<div class="mb-6">
+                    <img class="py-4 px-5 mb-4" src="/storage/{{ $dentista->fotodentista }}" alt="" class="rounded-xl">    
 					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="fotodentista">
 						Foto del dentista/Clínica
 					</label>
@@ -57,7 +58,7 @@
 						Adreça
 					</label>
 					<input class="border border-gray-400 p-2 w-full" 
-						type="text" name="adresa" id="adresa" value="{{ old('adresa') }}">
+						type="text" name="adresa" id="adresa" value="{{ $dentista->adresa }}">
 					@error('adresa')
 						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 					@enderror
@@ -69,7 +70,7 @@
 							Ciutat
 						</label>
 						<input class="border  border-gray-400 p-2 w-full" 
-							type="text" name="ciutat" id="ciutat" value="{{ old('ciutat') }}" >
+							type="text" name="ciutat" id="ciutat" value="{{ $dentista->ciutat }}" >
 						@error('ciutat')
 							<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 						@enderror
@@ -79,7 +80,7 @@
 						Codi Postal
 					</label>
 					<input class="border  border-gray-400 p-2 w-full" 
-						type="text" name="codipostal" id="codipostal" value="{{ old('codipostal') }}" >
+						type="text" name="codipostal" id="codipostal" value="{{ $dentista->codipostal }}" >
 					@error('codipostal')
 						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 					@enderror
@@ -92,7 +93,7 @@
 							NIF
 						</label>
 						<input class="border border-gray-400 p-2 w-full" 
-							type="text" name="NIF" id="NIF" value="{{ old('NIF') }}" required>
+							type="text" name="NIF" id="NIF" value="{{ $dentista->NIF }}" required>
 						@error('NIF')
 							<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 						@enderror
@@ -102,7 +103,7 @@
 							Número de Col·legiat
 						</label>
 						<input class="border border-gray-400 p-2 w-full" 
-							type="text" name="numcolegiat" id="numcolegiat" value="{{ old('numcolegiat') }}" required>
+							type="text" name="numcolegiat" id="numcolegiat" value="{{ $dentista->numcolegiat }}" required>
 						@error('numcolegiat')
 							<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 						@enderror
@@ -110,7 +111,11 @@
 				</div>	
 
 
-				<x-submit-button>Guarda</x-submit-button>
+				<x-submit-button>Actualitza</x-submit-button>
+
+				<a href="/dentista/{{$dentista->numcolegiat}}" 
+       				class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 rounded-2xl hover:bg-blue-600 ml-10">Torna enrera 
+				</a>
 
 			</form>
 		</x-panell>
