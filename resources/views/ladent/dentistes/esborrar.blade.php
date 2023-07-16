@@ -72,13 +72,8 @@
 						<label class="border border-gray-400 p-2 w-full">{{ $dentista->numcolegiat }}</label>
 					</div>	
 				</div>	
-
-				<a href="/dentista/{{$dentista->numcolegiat}}" 
-       				class="px-4 py-2 border border-blue-300 rounded-full text-blue-700 text-xs uppercase font-bold hover:bg-green-300"
-        			style="font-size: 10px">Torna enrera 
-				</a>
-
-				<a href="/admin/eliminar/{{$dentista->id}}" 
+				<x-dentistes.enrera-button :desti="$dentista->numcolegiat">Torna Enrera </x-enrera-button>
+				<a href="/admin/dentista/eliminar/{{$dentista->id}}" 
        				class="px-4 py-2 border border-blue-300 rounded-full text-red-500 text-xs uppercase font-bold 
        				   border-opacity-4 hover:border-opacity-5 rounded-xl bg-red-90 hover:bg-red-800 ml-10"
         			style="font-size: 10px">Eliminar

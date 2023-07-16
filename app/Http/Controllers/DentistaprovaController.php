@@ -2,14 +2,14 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use PDF;
 
 use App\Models\Dentista;
+
 class DentistaprovaController extends Controller
 {
     public function index()
     {
-       // return view('afegeix-dentista-post-form');
-
         return view('ladent.dentistes.index',[
             'dentistes' => Dentista::latest()->filtre(
                 request(['cerca','clinica'])
@@ -104,4 +104,22 @@ class DentistaprovaController extends Controller
 
         return redirect($retorna)->with('exitos','El dentista s ha eliminat.');
     }
+
+    public function imprimeix_dentista(Dentista $dentista)
+    {
+        
+        $coses=$dentista->getAttributes();        
+        $encarrecs = [
+            'encarrecs' => $dentista->encarrecs
+        ];
+
+       
+        //ddd($coses+$encarrecs);
+
+        $pdf = PDF::loadView('ladent.dentistes.mostrapdf', $coses+$encarrecs);
+
+        return $pdf->stream('dentista.pdf');  
+    }
+
+    
 }

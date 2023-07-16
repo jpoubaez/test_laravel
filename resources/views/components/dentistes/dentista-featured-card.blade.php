@@ -9,7 +9,7 @@
                     <div class="flex-1 flex flex-col justify-between">
                         <header class="mt-8 lg:mt-0">
                             <div class="space-x-2">
-                                <x-clinica-button :clinica="$dentista->clinica" />
+                                <x-dentistes.clinica-button :clinica="$dentista->clinica" />
                             </div>
 
                             <div class="mt-4">

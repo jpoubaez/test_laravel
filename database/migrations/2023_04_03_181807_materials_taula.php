@@ -17,6 +17,7 @@ class MaterialsTaula extends Migration
         Schema::create('materials', function (Blueprint $table) {
             $table->id()->unique();
             $table->string('nom');
+            $table->integer('codimaterial')->nullable()->unique();
             $table->float('preu_unitari',6,2);
             $table->timestamps();
         });

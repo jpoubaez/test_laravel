@@ -5,7 +5,7 @@
 			Editar un dentista
 		</h1>
 		<x-panell>
-			<form method="POST" action="/admin/actualitzar/{{ $dentista->id }}" enctype="multipart/form-data">
+			<form method="POST" action="/admin/dentista/actualitzar/{{ $dentista->id }}" enctype="multipart/form-data">
 				@csrf
 
 				<div class="mb-6">
@@ -109,14 +109,8 @@
 						@enderror
 					</div>	
 				</div>	
-
-
 				<x-submit-button>Actualitza</x-submit-button>
-
-				<a href="/dentista/{{$dentista->numcolegiat}}" 
-       				class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 rounded-2xl hover:bg-blue-600 ml-10">Torna enrera 
-				</a>
-
+				<x-dentistes.enrera-button :desti="$dentista->numcolegiat">Torna Enrera </x-enrera-button>			
 			</form>
 		</x-panell>
 	</section>
