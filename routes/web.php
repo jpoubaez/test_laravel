@@ -20,6 +20,11 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 use App\Http\Controllers\DentistaprovaController;
 use App\Http\Controllers\PacientController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\EncarrecController;
+use App\Http\Controllers\FacturaController;
+use App\Http\Controllers\Material_EncarrecController;
+
+
 
 use Illuminate\Validation\ValidationException;
 
@@ -89,6 +94,16 @@ Route::post('admin/material/actualitzar/{material:id}',[MaterialController::clas
 Route::get('admin/material/esborrar/{material:id}', [MaterialController::class, 'esborrar_material']); // algun dia ->middleware('admin');
 Route::get('admin/material/eliminar/{material:id}',[MaterialController::class, 'eliminar_material']); // algun dia ->middleware('admin');
 Route::get('print/material/{material:id}',[MaterialController::class, 'imprimeix_material']); // algun dia ->middleware('admin');
+
+Route::get('encarrecs', [EncarrecController::class, 'index'])->name('encarrecs'); // guardo el nom de la ruta, tambe
+Route::get('encarrec/{encarrec:id}', [EncarrecController::class, 'mostra']); // guardo el nom de la ruta, tambe
+Route::get('admin/encarrec/afegir', [EncarrecController::class, 'afegir_encarrec']); // algun dia ->middleware('admin');
+Route::post('admin/encarrecs',[EncarrecController::class, 'guardar_encarrec']); // algun dia ->middleware('admin');
+Route::get('admin/encarrec/editar/{encarrec:id}', [EncarrecController::class, 'editar_encarrec']); // algun dia ->middleware('admin');
+Route::post('admin/encarrec/actualitzar/{encarrec:id}',[EncarrecController::class, 'actualitzar_encarrec']); // algun dia ->middleware('admin');
+Route::get('admin/encarrec/esborrar/{encarrec:id}', [EncarrecController::class, 'esborrar_encarrec']); // algun dia ->middleware('admin');
+Route::get('admin/encarrec/eliminar/{encarrec:id}',[EncarrecController::class, 'eliminar_encarrec']); // algun dia ->middleware('admin');
+Route::get('print/encarrec/{encarrec:id}',[EncarrecController::class, 'imprimeix_encarrec']); // algun dia ->middleware('admin');
 
 Route::get('factures', [FacturaController::class, 'index'])->name('factures'); // guardo el nom de la ruta, tambe
 Route::get('factures/{factura}', [FacturaController::class, 'mostra']);
