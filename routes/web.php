@@ -105,11 +105,8 @@ Route::get('admin/encarrec/esborrar/{encarrec:id}', [EncarrecController::class, 
 Route::get('admin/encarrec/eliminar/{encarrec:id}',[EncarrecController::class, 'eliminar_encarrec']); // algun dia ->middleware('admin');
 Route::get('print/encarrec/{encarrec:id}',[EncarrecController::class, 'imprimeix_encarrec']); // algun dia ->middleware('admin');
 
+Route::post('admin/materialencarrecs/afegir/{encarrec:id}',[Material_EncarrecController::class, 'guardar_material_encarrec']); // algun dia ->middleware('admin');
+
 Route::get('factures', [FacturaController::class, 'index'])->name('factures'); // guardo el nom de la ruta, tambe
 Route::get('factures/{factura}', [FacturaController::class, 'mostra']);
 
-Route::get('encarrecs', [EncarrecController::class, 'index'])->name('encarrecs'); // guardo el nom de la ruta, tambe
-Route::get('encarrecs/{encarrec>:id}', [EncarrecController::class, 'mostra']);
-
-Route::get('materials', [MaterialController::class, 'index'])->name('materials'); // guardo el nom de la ruta, tambe
-Route::get('materials/{material}', [MaterialController::class, 'mostra']);

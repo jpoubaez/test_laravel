@@ -62,19 +62,13 @@ class EncarrecController extends Controller
 
     public function actualitzar_encarrec(Encarrec $encarrec)
     {
-       
+           
         $atributs = request()->validate([
-            'nom' => 'max:255',
-            'cognoms' => 'required',
-            'fotodentista' => 'image',
-            'clinica' => 'required',
-            'adresa' => 'max:255',
-            'codipostal' => 'digits:5',
-            'ciutat' => 'max:255',
-            'NIF' => 'required',
-            'numcolegiat' => 'required|numeric'
+            'descripcio' => 'required|max:255',
+            'data_entrega' => 'nullable|date',
+            'pacient_id' => 'required|numeric',
+            'dentista_id' => 'required|numeric'
         ]);
-    
 
         $encarrec->update($atributs);
         $retorna='/encarrec/'.$encarrec->id; // fem ruta
