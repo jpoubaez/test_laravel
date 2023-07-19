@@ -10,6 +10,7 @@ use App\Models\Dentista;
 use App\Models\Pacient;
 use App\Models\Albara;
 use App\Models\Encarrec;
+use App\Models\Material_Encarrec;
 
 
 
@@ -85,6 +86,15 @@ class EncarrecController extends Controller
 
     public function eliminar_encarrec(Encarrec $encarrec)
     {
+        
+
+        // Cal eliminar les linies que tingui
+        $linies=$encarrec->material_encarrec;
+        foreach ($linies as $linia) {
+             $linia->delete();
+        }
+
+
         $encarrec->delete();
         $retorna='/encarrecs'; // fem ruta
 

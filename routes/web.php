@@ -14,6 +14,8 @@ use App\Models\Dentista;
 use App\Models\Factura;
 use App\Models\Material;
 use App\Models\Encarrec;
+use App\Models\Material_Encarrec;
+
 use App\Models\User;
 use App\Services\Newsletter;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -106,6 +108,9 @@ Route::get('admin/encarrec/eliminar/{encarrec:id}',[EncarrecController::class, '
 Route::get('print/encarrec/{encarrec:id}',[EncarrecController::class, 'imprimeix_encarrec']); // algun dia ->middleware('admin');
 
 Route::post('admin/materialencarrecs/afegir/{encarrec:id}',[Material_EncarrecController::class, 'guardar_material_encarrec']); // algun dia ->middleware('admin');
+Route::get('admin/materialencarrecs/editar/{material_encarrec:id}', [Material_EncarrecController::class, 'editar_material_encarrec']); // algun dia ->middleware('admin');
+Route::post('admin/materialencarrecs/actualitzar/{material_encarrec:id}',[Material_EncarrecController::class, 'actualitzar_material_encarrec']); // algun dia ->middleware('admin');
+Route::get('admin/materialencarrecs/eliminar/{material_encarrec:id}',[Material_EncarrecController::class, 'eliminar_material_encarrec']); // algun dia ->middleware('admin');
 
 Route::get('factures', [FacturaController::class, 'index'])->name('factures'); // guardo el nom de la ruta, tambe
 Route::get('factures/{factura}', [FacturaController::class, 'mostra']);

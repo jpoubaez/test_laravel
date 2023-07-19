@@ -6,7 +6,7 @@
         </div>
         <div>
             <header class="mb-4 space-x-4">
-                <h3 class="font-bold text-lg"><a href="/material/{{ $liniaencarrec->materials_id }}">	{{ $liniaencarrec->material->nom }}</a></h3>
+                <h3 class="font-bold text-lg"><a href="/admin/materialencarrecs/editar/{{ $liniaencarrec->id }}">	{{ $liniaencarrec->material->nom }}</a></h3>
 
                <span class="text-sm">Quantitat: 	{{ $liniaencarrec->quantitat_material }}</span>
                <span class="text-sm ">Preu unitari: 	{{ $liniaencarrec->material->preu_unitari }}</span>

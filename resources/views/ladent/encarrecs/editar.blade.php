@@ -95,8 +95,8 @@
            
 			<form method="POST" action="/admin/materialencarrecs/afegir/{{ $encarrec->id }}" enctype="multipart/form-data">
 					@csrf
-				<div class="lg:grid lg:grid-cols-2 gap-10 mb-3" >
-	               	<div>
+				<div class="lg:grid lg:grid-cols-2 gap-10 mb-3 border border-gray-400 p-2 w-full rounded-xl" >
+	               	<div >
 						<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="materials_id">
 							Tasca/Material
 						</label>
@@ -122,19 +122,19 @@
 						</label>
 						<input class="border border-gray-400 p-2 w-full" 
 							type="text" name="quantitat_material" id="quantitat_material" value="{{ old('quantitat_material') }}" required>
-									@error('quantitat_material')
-										<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-									@enderror
-						
+							@error('quantitat_material')
+								<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+							@enderror
 					</div>		
-					<x-submit-button>Afegir</x-submit-button>
+					<x-submit-button>Afegir línia feina</x-submit-button>
 				</div>
 			</form>
-			<x-panell class="bg-purple-100 text-lg mt-4">
-                    @if ($encarrec->albara)
-                    <span class="font-bold"> Albarà: </span>   <a href="/albara/{{ $encarrec->albara->id }}">{{ $encarrec->albara->id }}</a>  
-                    @endif
-        	</x-panell>
+			
+            @if ($encarrec->albara)
+            	<x-panell class="bg-purple-100 text-lg mt-4">
+                    <span class="font-bold"> Albarà: </span>   <a href="/albara/{{ $encarrec->albara->id }}">{{ $encarrec->albara->id }}</a> 
+                </x-panell> 
+             @endif
 		</x-panell>
 	</section>
 </x-layout>
