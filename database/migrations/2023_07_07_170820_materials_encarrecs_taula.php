@@ -19,6 +19,7 @@ class MaterialsEncarrecsTaula extends Migration
             $table->foreignId('materials_id')->constrained();
             $table->foreignId('encarrecs_id')->constrained()->cascadeOnDelete();
             $table->float('quantitat_material',6,2);
+            $table->float('sub_total',6,2);
             $table->timestamps();
         });
     }

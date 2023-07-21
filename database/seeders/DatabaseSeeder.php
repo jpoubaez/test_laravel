@@ -78,28 +78,41 @@ class DatabaseSeeder extends Seeder
 
         Material_Encarrec::factory()->create([  // linies encarrec determinat amb material determinat
             'encarrecs_id' => $encarrec1->id,
-            'materials_id' => $materials[0]->id
+            'materials_id' => $materials[0]->id,
+            'quantitat_material' => 1.02,
+            'sub_total' => (8.02 * $materials[0]->preu_unitari)
         ]);
         Material_Encarrec::factory()->create([  // linies encarrec determinat amb material determinat
             'encarrecs_id' => $encarrec1->id,
-            'materials_id' => $materials[3]->id
+            'materials_id' => $materials[3]->id,
+            'quantitat_material' => 2.02,
+            'sub_total' => (8.02 * $materials[3]->preu_unitari)
         ]);
         Material_Encarrec::factory()->create([  // linies encarrec determinat amb material determinat
-            'encarrecs_id' => $encarrec1->id
+            'encarrecs_id' => $encarrec1->id,
+            'quantitat_material' => 0.42,
+            'sub_total' => (8.02 * $materials[3]->preu_unitari)
         ]);
         Material_Encarrec::factory()->create([  // linies encarrec determinat amb material
             'encarrecs_id' => $encarrec2->id,
-            'materials_id' => $materials[0]->id
+            'materials_id' => $materials[0]->id,
+            'quantitat_material' => 1.92,
+            'sub_total' => (8.02 * $materials[0]->preu_unitari)
         ]);
         Material_Encarrec::factory()->create([  // linies encarrec determinat amb material determinat
-            'encarrecs_id' => $encarrec3->id
+            'encarrecs_id' => $encarrec3->id,
+            'quantitat_material' => 1.72,
+            'sub_total' => (8.02 * $materials[3]->preu_unitari)
         ]);
         Material_Encarrec::factory()->create([  // linies encarrec determinat amb material
             'encarrecs_id' => $encarrec4->id,
-            'materials_id' => $materials[2]->id
+            'materials_id' => $materials[2]->id,
+            'quantitat_material' => 2.42,
+            'sub_total' => (8.02 * $materials[2]->preu_unitari)
         ]);
         Material_Encarrec::factory()->create([  // linies encarrec determinat amb material determinat
-            'encarrecs_id' => $encarrec5->id
+            'encarrecs_id' => $encarrec5->id,
+            'sub_total' => (8.02 * $materials[3]->preu_unitari)
         ]);
     }
 }

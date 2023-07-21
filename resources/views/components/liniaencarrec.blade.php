@@ -11,7 +11,7 @@
                <span class="text-sm">Quantitat: 	{{ $liniaencarrec->quantitat_material }}</span>
                <span class="text-sm ">Preu unitari: 	{{ $liniaencarrec->material->preu_unitari }}</span>
                @php
-                 $subtotal=$liniaencarrec->quantitat_material * $liniaencarrec->material->preu_unitari;
+                 $subtotal=$liniaencarrec->sub_total;
                @endphp
                <div>Subtotal: {{ $subtotal }} € </div>
             </header>          

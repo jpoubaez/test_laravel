@@ -12,15 +12,13 @@
 </style>
 
 <body style="font-family: Open Sans, sans-serif">
-    <section class="px-6 py-8">
-        <nav class="md:flex md:justify-between md:items-center">
+    <section class="px-4 py-8">
+        <nav class="lg:flex  lg:items-center">
             <div>
-                <a href="/">
-                    <img src="/images/dental-technology-gb61834956_322.jpg" alt="Imatge Dents" width="165" height="16">
-                </a>
+                <img src="/images/dental-technology-gb61834956_322.jpg" alt="Imatge Dents" width="160" height="14">
             </div>
 
-            <div class="mt-8 md:mt-0 flex items-center">
+            <div class="flex items-center">
                 @auth
                     <span class="text-xs font-bold uppercase">Benvingut/da, {{ auth()->user()->name }}!</span>
                     <form method="POST" action="/sortir" class="text-xs font-semibold text-blue-500 ml-6">
@@ -29,25 +27,27 @@
                     </form>
 
                 @else
-                    <a href="/registre" class="text-xs font-bold uppercase">Registrar</a>
-                    <a href="/entrar" class="ml-2 text-xs font-bold uppercase">Entrar</a>
+                    <a href="/registre" class="px-2 text-xs font-bold uppercase hover:bg-red-300 rounded-xl">Registrar</a>
+                    <a href="/entrar" class="px-2 text-xs font-bold uppercase hover:bg-red-300 rounded-xl">Entrar</a>
                 @endauth
 
 
-                <a href="#newsletter" class="bg-blue-500 ml-2 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
-                    Subscriu-te per estar al dia
+                <a href="#newsletter" class="bg-blue-500 ml-2 rounded-full text-xs font-semibold text-white uppercase py-5 px-3">
+                    Subscriu-te
                 </a>
-                <h1 class="text-3xl m-6 ">
+                <h1 class="text-2xl m-3 ">
                     Laboratori <span class="text-blue-500 ">Eulàlia Pou</span>
                 </h1>
-                <ul >
-                    <li style="float: left;"><a href="/dentistes" class="text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Dentistes</a></li>
-                    <li style="float: left;"><a href="/encarrecs" class="ml-4 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Encarrecs</a></li>
-                    <li style="float: left;"><a href="/factures" class="ml-4 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Factures</a></li>
-                    <li style="float: left;"><a href="/materials" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Materials</a></li>
-                    <li style="float: left;"><a href="/pacients" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Pacients</a></li>
-                    <li style="float: left;"><a href="/blog" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Posts</a></li>
-                </ul>
+                
+            </div>
+            <div class=" flex items-center bg-yellow-200 rounded-xl py-6">
+                <a href="/dentistes" class="px-5 text-xs font-bold uppercase hover:bg-red-300 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Dentistes</a>
+                <a href="/encarrecs" class="px-5 text-xs font-bold uppercase hover:bg-red-300 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Encarrecs</a>
+                <a href="/albarans" class="px-5 text-xs font-bold uppercase hover:bg-red-300 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Albarans</a>
+                <a href="/factures" class="px-5 text-xs font-bold uppercase hover:bg-red-300 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Factures</a>
+                <a href="/materials" class="px-5 text-xs font-bold uppercase hover:bg-red-300 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Materials</a>
+                <a href="/pacients" class="px-5 text-xs font-bold uppercase hover:bg-red-300 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Pacients</a>
+                <a href="/blog" class="px-5 text-xs font-bold uppercase hover:bg-red-300 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">Posts</a>
             </div>
         </nav>
 

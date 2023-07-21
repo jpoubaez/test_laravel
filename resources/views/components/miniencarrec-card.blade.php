@@ -4,7 +4,7 @@
         
         <div>
             <header>
-                <h3 class="font-bold"><a href="encarrecs/{{ $encarrec->id }}">Feina: {{ $encarrec->descripcio }}</a></h3>
+                <h3 class="font-bold"><a href="encarrec/{{ $encarrec->id }}">Feina: {{ $encarrec->descripcio }}</a></h3>
                 <p class="text-xs">Nom pacient: {{ $encarrec->pacient->nom }} {{ $encarrec->pacient->cognoms }}</p>
                 <p class="text-xs">Data creacio: <time>{{ $encarrec->created_at->diffForHumans() }}</time> </p>
                 @if (is_null ($encarrec->data_entrega) )

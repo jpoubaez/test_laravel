@@ -14,6 +14,7 @@ use App\Models\Dentista;
 use App\Models\Factura;
 use App\Models\Material;
 use App\Models\Encarrec;
+use App\Models\Albara;
 use App\Models\Material_Encarrec;
 
 use App\Models\User;
@@ -22,6 +23,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 use App\Http\Controllers\DentistaprovaController;
 use App\Http\Controllers\PacientController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\AlbaraController;
 use App\Http\Controllers\EncarrecController;
 use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\Material_EncarrecController;
@@ -68,7 +70,7 @@ Route::post('admin/posts',[PostController::class, 'guardar_post'])->middleware('
 
 Route::get('/', [DentistaprovaController::class, 'index']); // guardo el nom de la ruta, tambe
 Route::get('dentistes', [DentistaprovaController::class, 'index'])->name('dentistes'); // guardo el nom de la ruta, tambe
-Route::get('dentista/{dentista:numcolegiat}', [DentistaprovaController::class, 'mostra']); // guardo el nom de la ruta, tambe
+Route::get('dentista/{dentista:numcolegiat}', [DentistaprovaController::class, 'mostra']);
 Route::get('admin/dentista/afegir', [DentistaprovaController::class, 'afegir_dentista']); // algun dia ->middleware('admin');
 Route::post('admin/dentistes',[DentistaprovaController::class, 'guardar_dentista']); // algun dia ->middleware('admin');
 Route::get('admin/dentista/editar/{dentista:id}', [DentistaprovaController::class, 'editar_dentista']); // algun dia ->middleware('admin');
@@ -78,7 +80,7 @@ Route::get('admin/dentista/eliminar/{dentista:id}',[DentistaprovaController::cla
 Route::get('print/dentista/{dentista:id}',[DentistaprovaController::class, 'imprimeix_dentista']); // algun dia ->middleware('admin');
 
 Route::get('pacients', [PacientController::class, 'index'])->name('pacients'); // guardo el nom de la ruta, tambe
-Route::get('pacient/{pacient:id}', [PacientController::class, 'mostra']); // guardo el nom de la ruta, tambe
+Route::get('pacient/{pacient:id}', [PacientController::class, 'mostra']);
 Route::get('admin/pacient/afegir', [PacientController::class, 'afegir_pacient']); // algun dia ->middleware('admin');
 Route::post('admin/pacients',[PacientController::class, 'guardar_pacient']); // algun dia ->middleware('admin');
 Route::get('admin/pacient/editar/{pacient:id}', [PacientController::class, 'editar_pacient']); // algun dia ->middleware('admin');
@@ -88,7 +90,7 @@ Route::get('admin/pacient/eliminar/{pacient:id}',[PacientController::class, 'eli
 Route::get('print/pacient/{pacient:id}',[PacientController::class, 'imprimeix_pacient']); // algun dia ->middleware('admin');
 
 Route::get('materials', [MaterialController::class, 'index'])->name('materials'); // guardo el nom de la ruta, tambe
-Route::get('material/{material:id}', [MaterialController::class, 'mostra']); // guardo el nom de la ruta, tambe
+Route::get('material/{material:id}', [MaterialController::class, 'mostra']);
 Route::get('admin/material/afegir', [MaterialController::class, 'afegir_material']); // algun dia ->middleware('admin');
 Route::post('admin/materials',[MaterialController::class, 'guardar_material']); // algun dia ->middleware('admin');
 Route::get('admin/material/editar/{material:id}', [MaterialController::class, 'editar_material']); // algun dia ->middleware('admin');
@@ -98,7 +100,7 @@ Route::get('admin/material/eliminar/{material:id}',[MaterialController::class, '
 Route::get('print/material/{material:id}',[MaterialController::class, 'imprimeix_material']); // algun dia ->middleware('admin');
 
 Route::get('encarrecs', [EncarrecController::class, 'index'])->name('encarrecs'); // guardo el nom de la ruta, tambe
-Route::get('encarrec/{encarrec:id}', [EncarrecController::class, 'mostra']); // guardo el nom de la ruta, tambe
+Route::get('encarrec/{encarrec:id}', [EncarrecController::class, 'mostra']);
 Route::get('admin/encarrec/afegir', [EncarrecController::class, 'afegir_encarrec']); // algun dia ->middleware('admin');
 Route::post('admin/encarrecs',[EncarrecController::class, 'guardar_encarrec']); // algun dia ->middleware('admin');
 Route::get('admin/encarrec/editar/{encarrec:id}', [EncarrecController::class, 'editar_encarrec']); // algun dia ->middleware('admin');
@@ -111,6 +113,11 @@ Route::post('admin/materialencarrecs/afegir/{encarrec:id}',[Material_EncarrecCon
 Route::get('admin/materialencarrecs/editar/{material_encarrec:id}', [Material_EncarrecController::class, 'editar_material_encarrec']); // algun dia ->middleware('admin');
 Route::post('admin/materialencarrecs/actualitzar/{material_encarrec:id}',[Material_EncarrecController::class, 'actualitzar_material_encarrec']); // algun dia ->middleware('admin');
 Route::get('admin/materialencarrecs/eliminar/{material_encarrec:id}',[Material_EncarrecController::class, 'eliminar_material_encarrec']); // algun dia ->middleware('admin');
+
+Route::get('albarans', [AlbaraController::class, 'index'])->name('albarans'); // guardo el nom de la ruta, tambe
+Route::get('albara/{albara:id}', [AlbaraController::class, 'mostra']);
+Route::get('admin/albara/afegir/{encarrec:id}',[AlbaraController::class, 'afegir_albara']); // algun dia ->middleware('admin');
+Route::get('admin/albara/eliminar/{encarrec:id}',[AlbaraController::class, 'eliminar_albara']); // algun dia ->middleware('admin');
 
 Route::get('factures', [FacturaController::class, 'index'])->name('factures'); // guardo el nom de la ruta, tambe
 Route::get('factures/{factura}', [FacturaController::class, 'mostra']);

@@ -24,7 +24,8 @@ class MaterialEncarrecFactory extends Factory
         return [
             'materials_id' => Dentista::factory(),  // li creem un dentista random
             'encarrecs_id' => Pacient::factory(),   // li creem un pacient random
-            'quantitat_material' => $this->faker->randomFloat(2,0,9999)
+            'quantitat_material' => $this->faker->randomFloat(2,0,10),
+            'sub_total' => $this->faker->randomFloat(2,0,10)
         ];
     }
 }
