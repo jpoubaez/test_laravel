@@ -31,7 +31,7 @@
                             <li style="float: left;"><a href="/admin/encarrec/editar/{{ $encarrec->id }}" class=" text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Editar</a></li>
                             <li style="float: left;"><a href="/admin/encarrec/esborrar/{{ $encarrec->id }}" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Esborrar</a></li>
                             <li style="float: left;"><a href="/print/encarrec/{{ $encarrec->id }}" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Imprimir</a></li>
-                            @if ( !($encarrec->albara))  
+                            @if ( !($encarrec->albara_id))  
                             <li style="float: left;"><a href="/admin/albara/afegir/{{ $encarrec->id }}" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Fer Albarà</a></li>
                             @endif
 

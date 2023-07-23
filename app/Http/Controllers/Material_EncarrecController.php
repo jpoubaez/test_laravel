@@ -17,19 +17,27 @@ class Material_EncarrecController extends Controller
     public function guardar_material_encarrec(Encarrec $encarrec)
     {
 
-        $id_encarrec = [
-            'encarrecs_id' => $encarrec->id
-        ];
+
         $atributs = request()->validate([
             'materials_id' => 'required|numeric',
             'quantitat_material' => 'required|numeric'
         ]);
+
+         $id_encarrec = [
+            'sub_total' => 0,
+            'encarrecs_id' => $encarrec->id
+        ];
                
         $atributs = $atributs + $id_encarrec;
         
         $noumaterialencarrec=Material_Encarrec::create($atributs);
-        $retorna='/admin/encarrec/editar/'.$encarrec->id; // fem ruta
+        $subtotal = [
+            'sub_total' => ($noumaterialencarrec->quantitat_material * $noumaterialencarrec->material->preu_unitari)
+        ];
 
+        $noumaterialencarrec->update($subtotal);
+
+        $retorna='/admin/encarrec/editar/'.$encarrec->id; // fem ruta
         return redirect($retorna)->with('exitos','La feina s ha afegit.');
     }
 

@@ -61,4 +61,12 @@ class AlbaraController extends Controller
 
         return redirect($retorna)->with('exitos','L albarà s ha eliminat.');
     }
+
+    public function imprimeix_albara(Encarrec $encarrec)
+    {
+        
+        $retorna='/albarans'; // fem ruta
+
+        return redirect($retorna)->with('exitos','L albara s ha imprès.');
+    }
 }
