@@ -9,10 +9,10 @@
                     <div class="flex-1 flex flex-col justify-between">
                         <header class="mt-8 lg:mt-0">
                             <div class="lg:grid lg:grid-cols-3">
+                                <div class="space-x-2 ">
+                                    <x-factures.dentista-button :dentista="$factura->albarans[0]->encarrec->dentista" />
+                                </div>
                                 @foreach($factura->albarans as $albara)
-                                    <div class="space-x-2 ">
-                                        <x-factures.dentista-button :dentista="$albara->encarrec->dentista" />
-                                    </div>
                                     <div class="space-x-2">
                                         <x-factures.pacient-button :pacient="$albara->encarrec->pacient" />
                                     </div>
@@ -20,7 +20,7 @@
                             </div>    
                             <div class="mt-4">
                                <h1 class="text-3xl">
-                                    <a href="/factura/{{ $factura->id }}">{{ $factura->data_generacio }}</a>       
+                                    <a href="/factura/{{ $factura->id }}">{{ $factura->data_generacio }}</a> <span class="font-bold text-xl"> Total: {{ $factura->total_a_cobrar }} € </span>     
                                 </h1>
 
                                 {{-- <span class="mt-2 block text-s">

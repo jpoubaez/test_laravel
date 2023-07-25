@@ -29,21 +29,27 @@ class AlbaraController extends Controller
 
    public function afegir_albara(Encarrec $encarrec)
     {
-      // Calcular total de l'encarrec
+        // Calcular total de l'encarrec
 
-      // Fer albara i posar total i associar a encarrec
-      $atributs = ([
+        // Fer albara i posar total i associar a encarrec
+        $atributs = ([
             'data_generacio' => date("Y/m/d"),
-            'total' => 23,
+            'total' => 0,
             'entregat' => 0
-      ]);
-      $noualbara = Albara::create($atributs);
+        ]);
 
-      // posar albara_id a $encarrec
-      $idalbara= ([
+        $totalencarrec = 0;
+        foreach($encarrec->material_encarrec as $liniaencarrec)
+            $totalencarrec+=$liniaencarrec->sub_total;
+        
+        $atributs['total'] = $totalencarrec;
+        $noualbara = Albara::create($atributs);
+
+        // posar albara_id a $encarrec
+        $idalbara= ([
             'albara_id' => $noualbara->id
-      ]);
-      $encarrec->update($idalbara);
+        ]);
+        $encarrec->update($idalbara);
 
       $retorna='/encarrec/'.$encarrec->id; // fem ruta
       return redirect($retorna)->with('exitos','L albara s ha creat.');

@@ -29,8 +29,8 @@
                                         Pacient: <span class="mt-2  text-gray-400 text-s"> {{ $albara->encarrec->pacient->nom }}  {{ $albara->encarrec->pacient->cognoms }}</span>
                                     </span>
                                      @if ($albara->factura) 
-                                    <div class="mt-2 block"> Factura:
-                                        <a href="/factura/{{ $albara->factura->id }}" class="ml-6 text-s hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">{{ $albara->factura->data_generacio }}</a>
+                                    <div class="mt-2 block"> <span class="font-bold"> Factura:</span>
+                                        <a href="/factura/{{ $albara->factura->id }}" class="ml-6 text-s hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">{{ $albara->factura->data_generacio }}</a><span class="font-bold"> Total: </span>{{ $albara->factura->total_a_cobrar }} €
                                     </div>
                                 @endif
                                 </div>

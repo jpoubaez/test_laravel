@@ -45,12 +45,17 @@ class DatabaseSeeder extends Seeder
         $dentistes = Dentista::factory(2)->create();
         Pacient::factory(1)->create();
         $materials = Material::factory(4)->create();
+
         $factura = Factura::factory()->create(); // una factura sense albarans
         $albaransFactura = Albara::factory(3)->create([  // albarans amb factura
             'factura_id' => $factura->id
         ]);
-        $albarans = Albara::factory(2)->create();
-        Factura::factory()->create(); // una factura sense albarans
+
+        
+        $factura2 = Factura::factory()->create(); // una factura sense albarans
+        $albarans = Albara::factory(2)->create([  // albarans amb factura
+            'factura_id' => $factura2->id
+        ]);
 
         $encarrec1 = Encarrec::factory()->create([  // encarrecs d'un dentista determinat amb albara amb factura
             'dentista_id' => $dentistes[0]->id,
@@ -80,39 +85,60 @@ class DatabaseSeeder extends Seeder
             'encarrecs_id' => $encarrec1->id,
             'materials_id' => $materials[0]->id,
             'quantitat_material' => 1.02,
-            'sub_total' => (8.02 * $materials[0]->preu_unitari)
+            'sub_total' => (1.02 * $materials[0]->preu_unitari)
         ]);
         Material_Encarrec::factory()->create([  // linies encarrec determinat amb material determinat
             'encarrecs_id' => $encarrec1->id,
             'materials_id' => $materials[3]->id,
             'quantitat_material' => 2.02,
-            'sub_total' => (8.02 * $materials[3]->preu_unitari)
+            'sub_total' => (2.02 * $materials[3]->preu_unitari)
         ]);
         Material_Encarrec::factory()->create([  // linies encarrec determinat amb material determinat
             'encarrecs_id' => $encarrec1->id,
             'quantitat_material' => 0.42,
-            'sub_total' => (8.02 * $materials[3]->preu_unitari)
+            'sub_total' => (0.42 * $materials[3]->preu_unitari)
         ]);
         Material_Encarrec::factory()->create([  // linies encarrec determinat amb material
             'encarrecs_id' => $encarrec2->id,
             'materials_id' => $materials[0]->id,
             'quantitat_material' => 1.92,
-            'sub_total' => (8.02 * $materials[0]->preu_unitari)
+            'sub_total' => (1.92 * $materials[0]->preu_unitari)
         ]);
         Material_Encarrec::factory()->create([  // linies encarrec determinat amb material determinat
             'encarrecs_id' => $encarrec3->id,
             'quantitat_material' => 1.72,
-            'sub_total' => (8.02 * $materials[3]->preu_unitari)
+            'sub_total' => (1.72 * $materials[3]->preu_unitari)
         ]);
+
+        foreach ($albaransFactura as $albi) {
+            $liniesalbi = $albi->encarrec->material_encarrec;
+
+            $totalalbi=0;
+            foreach ($liniesalbi as $linia ) 
+                $totalalbi=$totalalbi+($linia->quantitat_material * $linia->material->preu_unitari);
+            $atribalbi=$albi->getAttributes();
+            $atribalbi['total']=$totalalbi;
+            $albi->update($atribalbi); 
+         } 
+
+        $totalfactura=0;
+        foreach ($albaransFactura as $alba ) 
+            $totalfactura=$totalfactura+$alba->total;
+        $atribfactura=$factura->getAttributes();
+        $atribfactura['total_a_cobrar']=$totalfactura;
+        $factura->update($atribfactura); 
+
         Material_Encarrec::factory()->create([  // linies encarrec determinat amb material
             'encarrecs_id' => $encarrec4->id,
             'materials_id' => $materials[2]->id,
             'quantitat_material' => 2.42,
-            'sub_total' => (8.02 * $materials[2]->preu_unitari)
+            'sub_total' => (2.42 * $materials[2]->preu_unitari)
         ]);
         Material_Encarrec::factory()->create([  // linies encarrec determinat amb material determinat
             'encarrecs_id' => $encarrec5->id,
             'sub_total' => (8.02 * $materials[3]->preu_unitari)
         ]);
+
+        
     }
 }

@@ -94,8 +94,34 @@ class EncarrecController extends Controller
              $linia->delete();
         }
 
-
+        // Tenia  albara??
+        $albara=$encarrec->albara;
         $encarrec->delete();
+        if ($albara) {
+            // Tenia  factura??
+            $factura=$albara->factura;
+
+            // La factura té més albarans?
+            if ($factura) {
+                if ($factura->albarans->count()==1) { // unic albara, elimino factura
+                    $albara->delete();
+                    $factura->delete();     
+                }
+                else { //actualitza total factura
+                    $totalfactura=0;
+                    $albara->delete(); 
+                    foreach ($factura->albarans as $albara) {
+                        $totalfactura=$totalfactura+$albara->total;
+                    }
+                    $atributs_factura = $factura->getAttributes();
+                    $atributs_factura['total_a_cobrar'] = $totalfactura;
+                    $factura->update($atributs_factura);
+                }
+            }
+            else $albara->delete();
+              
+        }
+
         $retorna='/encarrecs'; // fem ruta
 
         return redirect($retorna)->with('exitos','L encarrec s ha eliminat.');

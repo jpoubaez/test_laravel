@@ -124,7 +124,8 @@ Route::get('print/albara/{albara:id}',[AlbaraController::class, 'imprimeix_albar
 Route::get('factures', [FacturaController::class, 'index'])->name('factures'); // guardo el nom de la ruta, tambe
 Route::get('factura/{factura:id}', [FacturaController::class, 'mostra']);
 Route::get('admin/factura/afegir/{albara:id}',[FacturaController::class, 'afegir_factura']); // algun dia ->middleware('admin');
-Route::get('admin/factura/afegiralbara/{albara:id}',[FacturaController::class, 'afegir_albarafactura']); // algun dia ->middleware('admin');
+Route::get('admin/factura/buscaralbara/{factura:id}',[FacturaController::class, 'buscar_albarafactura']); // algun dia ->middleware('admin');
+Route::post('admin/factura/afegiralbara/{factura:id}',[FacturaController::class, 'afegir_albarafactura']); // algun dia ->middleware('admin');
 Route::get('admin/factura/treurealbara/{albara:id}',[FacturaController::class, 'eliminar_albarafactura']); // algun dia ->middleware('admin');
 Route::get('admin/factura/eliminar/{factura:id}',[FacturaController::class, 'eliminar_factura']); // algun dia ->middleware('admin');
 Route::get('print/factura/{factura:id}',[FacturaController::class, 'imprimeix_factura']); // algun dia ->middleware('admin');

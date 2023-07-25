@@ -56,6 +56,11 @@ class Material_EncarrecController extends Controller
         ]);
 
         $material_encarrec->update($atributs);
+        $sub_total=$material_encarrec->material->preu_unitari * $material_encarrec->quantitat_material;
+        $atributsnous = $material_encarrec->getAttributes();
+        $atributsnous['sub_total']=$sub_total;
+        $material_encarrec->update($atributsnous);
+
         $retorna='/admin/encarrec/editar/'.$material_encarrec->encarrecs_id; // fem ruta
 
         return redirect($retorna)->with('exitos','La línia s ha actualitzat.');

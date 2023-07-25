@@ -28,11 +28,11 @@
                     </div>
                     <div class="relative flex lg:inline-flex items-center ">
                         <ul  style = "overflow: hidden; margin-left: 20px;" class="rounded-xl px-4 py-2 bg-blue-100 ">
-                            <li style="float: left;"><a href="/admin/albara/eliminar/{{ $albara->encarrec->id }}" class="text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Esborrar</a></li>
-                            <li style="float: left;"><a href="/print/albara/{{ $albara->id }}" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Imprimir</a></li>
+                            
+                            <li style="float: left;"><a href="/print/albara/{{ $albara->id }}" class="text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Imprimir</a></li>
                             @if ( !($albara->factura))  
+                                <li style="float: left;"><a href="/admin/albara/eliminar/{{ $albara->encarrec->id }}" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Esborrar</a></li>
                                 <li style="float: left;"><a href="/admin/factura/afegir/{{ $albara->id }}" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Fer Factura</a></li>
-                                <li style="float: left;"><a href="/admin/factura/afegiralbara/{{ $albara->id }}" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Afegir a Factura</a></li>
                             @else
                                 <li style="float: left;"><a href="/admin/factura/treurealbara/{{ $albara->id }}" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Treure de Factura</a></li>
                             @endif
@@ -63,12 +63,13 @@
                             <x-albarans.liniaencarrec :liniaencarrec="$liniaencarrec" />
                         @endforeach
                         <x-panell class="bg-purple-100 text-3xl">
-                            <div> <span class="font-bold"> Total:</span>  {{ $totalencarrec }} € </div>
+                            <div> <span class="font-bold"> Total:</span>  {{ $albara->total }} € </div>
                         </x-panell>
                         @if ($albara->factura) 
                             <x-panell class="bg-pink-100 text-2xl">
                                 <div> <span class="font-bold"> Factura:</span>
                                     <a href="/factura/{{ $albara->factura->id }}" class="ml-6 text-xl font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">{{ $albara->factura->data_generacio }}</a>
+                                    <span class="font-bold"> Total: </span>{{ $albara->factura->total_a_cobrar }} €
                                 </div>
                             </x-panell>
                         @endif
