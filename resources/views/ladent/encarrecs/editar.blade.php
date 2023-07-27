@@ -21,10 +21,10 @@
 
 				<div class="mb-6">
 					<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="data_entrega">
-						Data entrega (aaaa-mm-dd)
+						Data entrega (dd-mm-aaaa)
 					</label>
 					<input class="border border-gray-400 p-2 w-full" 
-						type="text" name="data_entrega" id="data_entrega" value="{{ $encarrec->data_entrega }}">
+						type="date" name="data_entrega" id="data_entrega" value="{{ $encarrec->data_entrega }}">
 					@error('data_entrega')
 						<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 					@enderror
@@ -95,12 +95,15 @@
            
 			<form method="POST" action="/admin/materialencarrecs/afegir/{{ $encarrec->id }}" enctype="multipart/form-data">
 					@csrf
-				<div class="lg:grid lg:grid-cols-2 gap-10 mb-3 border border-gray-400 p-2 w-full rounded-xl" >
-	               	<div >
-						<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="materials_id">
+				<div class="mb-3 border border-gray-400 p-2 w-full rounded-xl" >
+	               	<div class="lg:grid lg:grid-cols-10 gap-3 mb-6" >
+						<label class="block col-span-8 mb-2 uppercase font-bold text-xs text-gray-700" for="materials_id">
 							Tasca/Material
 						</label>
-						<select name="materials_id" id="materials_id" class="bg-green-100 rounded-xl" required>
+						<label class="block mb-2 col-span-2 uppercase font-bold text-xs text-gray-700" for="quantitat_material">
+									Quantitat
+						</label>
+						<select name="materials_id" id="materials_id" class="bg-green-100 rounded-xl col-span-8" required>
 									@php
 										$materials = \App\Models\Material::all()->sortBy("codimaterial");
 									@endphp
@@ -111,21 +114,18 @@
 										>{{ ucwords($material->codimaterial) }} {{ ucwords($material->nom) }}</option>
 									@endforeach
 						</select>
-								@error('materials_id')
-									<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-								@enderror
+						@error('materials_id')
+							<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+						@enderror
+
+						<input class="border border-gray-400 p-2 w-full col-span-2" 
+							type="text" name="quantitat_material" id="quantitat_material" value="{{ old('quantitat_material') }}" required>
+						@error('quantitat_material')
+							<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+						@enderror
 					
 					</div>
-					<div>		
-						<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="quantitat_material">
-									Quantitat
-						</label>
-						<input class="border border-gray-400 p-2 w-full" 
-							type="text" name="quantitat_material" id="quantitat_material" value="{{ old('quantitat_material') }}" required>
-							@error('quantitat_material')
-								<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-							@enderror
-					</div>		
+							
 					<x-submit-button>Afegir línia feina</x-submit-button>
 				</div>
 			</form>

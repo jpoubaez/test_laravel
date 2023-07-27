@@ -7,13 +7,19 @@
 html, body, h1, h2, h3, h4, h5, h6 {
   font-family: Helvetica, Arial, sans-serif;
 }
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
 </style>
  
 <body class="w3-container w3-white w3-text-color-black">
     
-        <nav style="height:109px;" class="w3-display-container w3-yellow w3-text-color-black w3-border w3-border-black w3-round-small w3-center">
+        <nav style="height:113px;" class="w3-display-container w3-yellow w3-text-color-black w3-border w3-border-black w3-round-small w3-center">
            
-                <img src="images/dental-technology-gb61834956_322.jpg" alt="Imatge Dents" width="160" height="107" class="w3-display-topleft w3-padding-small">
+                <img src="images/dental-technology-gb61834956_322.jpg" alt="Imatge Dents" width="160" height="105" class="w3-display-topleft w3-padding-small">
            
             
                 
@@ -31,7 +37,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
         </div>
         
 
-        <footer class="w3-container w3-yellow w3-border w3-border-black w3-round-small w3-small w3-center">
+        <footer class="w3-container w3-yellow w3-border w3-border-black w3-round-small w3-small w3-center  footer">
             
                 <div>
                     Laboratori <span >Eulàlia Pou</span> C/ Nou, 8, 13, 3a 17007 Girona

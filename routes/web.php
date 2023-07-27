@@ -46,7 +46,7 @@ use Illuminate\Validation\ValidationException;
 
 Route::get('kk', function () {
 
-    $encarrec = Encarrec::find(7);
+    $encarrec = Encarrec::find(8);
     //ddd($encarrec);
     $albara =  $encarrec->albara;
     $feines =  $encarrec->material_encarrec;  
