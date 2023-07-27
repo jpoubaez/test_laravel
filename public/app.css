@@ -1,7 +1,7 @@
 
 body {
-	background: navy;
-	color: white;
+	background: white;
+	color: green;
 	max-width: 600px;
 	margin: auto;
 	font-family: sans-serif;
@@ -38,7 +38,7 @@ nav {
 	overflow: hidden;
 	top:5px;
 	margin-bottom: 150px;
-	color: darkred;
+	color: green;
 
 }
 

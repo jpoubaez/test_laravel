@@ -43,6 +43,20 @@ use Illuminate\Validation\ValidationException;
 |
 */
 
+
+Route::get('kk', function () {
+
+    $encarrec = Encarrec::find(7);
+    //ddd($encarrec);
+    $albara =  $encarrec->albara;
+    $feines =  $encarrec->material_encarrec;  
+    return view('ladent.albarans.mostrapdf',[
+        'encarrec'    => $encarrec,
+        'albara'    => $albara,
+        'feines'    => $feines 
+    ]);
+});
+
 Route::get('/', function () {
 
     return view('welcome');
@@ -118,7 +132,7 @@ Route::get('albarans', [AlbaraController::class, 'index'])->name('albarans'); //
 Route::get('albara/{albara:id}', [AlbaraController::class, 'mostra']);
 Route::get('admin/albara/afegir/{encarrec:id}',[AlbaraController::class, 'afegir_albara']); // algun dia ->middleware('admin');
 Route::get('admin/albara/eliminar/{encarrec:id}',[AlbaraController::class, 'eliminar_albara']); // algun dia ->middleware('admin');
-Route::get('print/albara/{albara:id}',[AlbaraController::class, 'imprimeix_albara']); // algun dia ->middleware('admin');
+Route::get('print/albara/{encarrec:id}',[AlbaraController::class, 'imprimeix_albara']); // algun dia ->middleware('admin');
 
 
 Route::get('factures', [FacturaController::class, 'index'])->name('factures'); // guardo el nom de la ruta, tambe

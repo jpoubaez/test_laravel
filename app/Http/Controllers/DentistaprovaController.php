@@ -105,18 +105,19 @@ class DentistaprovaController extends Controller
         return redirect($retorna)->with('exitos','El dentista s ha eliminat.');
     }
 
-    public function imprimeix_dentista(Dentista $dentista)
+    public function imprimeix_dentista(Dentista $dentistes)
     {
         
-        $coses=$dentista->getAttributes();        
-        $encarrecs = [
-            'encarrecs' => $dentista->encarrecs
+        $dentistes = Dentista::all(); 
+        //view()->share('dentistes',$dentistes);
+//ddd($dentistes); 
+       $data = [
+        'dentistes'    => $dentistes
         ];
-
-       
-        //ddd($coses+$encarrecs);
-
-        $pdf = PDF::loadView('ladent.dentistes.mostrapdf', $coses+$encarrecs);
+        
+        
+        //$pdf = PDF::loadView('ladent.dentistes.mostrapdf2');
+        $pdf = PDF::loadView('ladent.dentistes.mostrapdf2',$data);
 
         return $pdf->stream('dentista.pdf');  
     }

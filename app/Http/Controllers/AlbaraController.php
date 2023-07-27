@@ -71,8 +71,25 @@ class AlbaraController extends Controller
     public function imprimeix_albara(Encarrec $encarrec)
     {
         
-        $retorna='/albarans'; // fem ruta
+        $albara =  $encarrec->albara;
+        $atributs = $albara->getAttributes();
+        $atributs['data_entrega'] = today()->toDateTimeString();
+        $albara->update($atributs);
+        //ddd($albara);
 
-        return redirect($retorna)->with('exitos','L albara s ha imprès.');
+        $feines =  $encarrec->material_encarrec;
+        
+
+        $data = [
+            'encarrec'    => $encarrec,
+            'albara'    => $albara,
+            'feines'    => $feines 
+        ];
+        
+        
+        //$pdf = PDF::loadView('ladent.dentistes.mostrapdf2');
+        $pdf = PDF::loadView('ladent.albarans.mostrapdf',$data);
+
+        return $pdf->stream('dentista.pdf');  
     }
 }
