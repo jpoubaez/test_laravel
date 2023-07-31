@@ -148,22 +148,17 @@ class FacturaController extends Controller
         return $pdf->stream('factura.pdf'); // el mostra 
     }
 
-    public function imprimeix_factura(Encarrec $encarrec)
+    public function imprimeix_factura(Factura $factura)
     {
         
-        $albara =  $encarrec->albara;
-        $atributs = $albara->getAttributes();
-        $atributs['data_entrega'] = today()->toDateTimeString();
-        $albara->update($atributs);
-        //ddd($albara);
-
-        $feines =  $encarrec->material_encarrec;
-        
+        $albarans =  $factura->albarans;
+        $atributs = $factura->getAttributes();
+        $atributs['data_generacio'] = today()->toDateTimeString();
+        $factura->update($atributs);
 
         $data = [
-            'encarrec'    => $encarrec,
-            'albara'    => $albara,
-            'feines'    => $feines 
+            'factura'    => $factura,
+            'albarans'    => $albarans
         ];
         
         

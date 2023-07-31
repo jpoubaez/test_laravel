@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>{{ $factura->descripcio }}</title>
+        <title>{{  date('d-m-Y', strtotime($factura->data_generacio))  }}</title>
         <style>
             * {
                 -webkit-box-sizing: border-box;
@@ -19,6 +19,12 @@
             th,td { 
                 font-family: DejaVu Sans; 
                 font-size:10px;
+            }
+
+            .descripcio {
+               font-family: DejaVu Sans; 
+                font-size:15px;
+                font-weight: bold;
             }
 
             .panel {
@@ -86,17 +92,15 @@
                 <img class="img-rounded" width="160" height="105" src="images/dental-technology-gb61834956_322.jpg">
             </div>
             <div style="margin-left:300pt;">
-                <b>Data: </b>{{ date('d-m-Y', strtotime($albara->data_entrega))  }}<br />
+                <b>Data: </b>{{ date('d-m-Y', strtotime($factura->data_generacio))  }}<br />
                {{--  @if ($invoice->due_date)
                     <b>Due date: </b>{{ $invoice->due_date->formatLocalized('%A %d %B %Y') }}<br />
                 @endif --}}
-                @if ($albara->id)
-                    <b>Número albarà: </b> {{ $albara->id }}
+                @if ($factura->id)
+                    <b>Número factura: </b> {{ $factura->id }}
                 @endif
                 <br />
             </div>
-            <br />
-            <h2>{{ $encarrec->descripcio }} {{ $albara->id ? '#' . $albara->id : '' }}</h2>
         </header>
         <main>
             <div style="clear:both; position:relative;">
@@ -116,38 +120,42 @@
                 <div style="margin-left: 300pt;">
                     <h4>Client:</h4>
                     <div class="panel panel-default">
+                        @php
+                          $dentista=$albarans[0]->encarrec->dentista;
+                        @endphp
                         <div class="panel-body">
-                            {{ $encarrec->dentista->nom }} {{ $encarrec->dentista->cognoms }}<br />
-                            Num Col·legiat: {{ $encarrec->dentista->numcolegiat }}<br />
-                            Clínica: {{ $encarrec->dentista->clinica }}<br />
-                            NIF: {{ $encarrec->dentista->NIF }}<br />
-                            {{ $encarrec->dentista->adresa }}<br />
-                            {{ $encarrec->dentista->codipostal }} {{ $encarrec->dentista->ciutat }}<br />
+                            {{ $dentista->nom }} {{ $dentista->cognoms }}<br />
+                            Num Col·legiat: {{ $dentista->numcolegiat }}<br />
+                            Clínica: {{ $dentista->clinica }}<br />
+                            NIF: {{ $dentista->NIF }}<br />
+                            {{ $dentista->adresa }}<br />
+                            {{ $dentista->codipostal }} {{ $dentista->ciutat }}<br />
                         </div>
                     </div>
                 </div>
             </div>
-            <h4>Articles/Tasques:</h4>
+            {{-- <span class="descripcio">{{ date('d-m-Y', strtotime($factura->data_generacio)) }} </span><br /> --}}
+            <span class="descripcio">Factura (mes-any): {{ date('m',strtotime($factura->data_generacio)).'-'.date('y',strtotime($factura->data_generacio)) }} </span><br />
+            <h4>Albarans:</h4>
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>ID</th>
-                        <th>Nom article/Tasca</th>
+                        <th>Num Albarà</th>
+                        <th>Encàrrec</th>
                         <th>Preu</th>
-                        <th>Quantitat</th>
-                        <th>Total</th>
+                        <th>Data entrega</th>
+                    
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($feines as $feina)
+                    @foreach ($albarans as $albara)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $feina->material->codimaterial }}</td>
-                            <td>{{ $feina->material->nom }}</td>
-                            <td>{{ $feina->material->preu_unitari }} € </td>
-                            <td>{{ $feina->quantitat_material }}</td>
-                            <td>{{ $feina->sub_total }} €</td>
+                            <td>{{ $albara->id }}</td>
+                            <td>{{ $albara->encarrec->descripcio }}</td>
+                            <td>{{ $albara->total }} €</td>
+                            <td>{{ date('d-m-Y', strtotime($albara->data_entrega)) }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -158,7 +166,7 @@
                         <h4>Notes:</h4>
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                Pacient: {{ $encarrec->pacient->nom }} {{ $encarrec->pacient->cognoms }}
+                                {{-- Pacient: {{ $encarrec->pacient->nom }} {{ $encarrec->pacient->cognoms }} --}}
                             </div>
                         </div>
                     </div>
@@ -169,7 +177,7 @@
                         <tbody>
                             <tr>
                                 <td><b>Subtotal</b></td>
-                                <td>{{ $albara->total }} €</td>
+                                <td>{{ $factura->total_a_cobrar }} €</td>
                             </tr>
                             
                                 <tr>
@@ -179,7 +187,7 @@
                                         </b>
                                     </td>
                                     @php 
-                                        $iva = ($albara->total*0.21);
+                                        $iva = ($factura->total_a_cobrar*0.21);
                                     @endphp
                                     <td>{{ number_format($iva,2) }} €</td>
                                 </tr>
@@ -187,7 +195,7 @@
                             <tr>
                                 <td><b>TOTAL</b></td>
                                 @php 
-                                    $totalambiva = $albara->total+$iva;
+                                    $totalambiva = $factura->total_a_cobrar+$iva;
                                 @endphp
                                 <td><b>{{ number_format($totalambiva,2) }} €</b></td>
                             </tr>

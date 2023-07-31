@@ -65,7 +65,7 @@
                             <x-liniaencarrec :liniaencarrec="$liniaencarrec" />
                         @endforeach
                         <x-panell class="bg-purple-100 text-3xl">
-                            <div> <span class="font-bold"> Total:</span>  {{ $totalencarrec }} € </div>
+                            <div> <span class="font-bold"> Total:</span>   {{ number_format($totalencarrec,2) }} € </div>
                             @if ($encarrec->albara)
                                 <span class="font-bold"> Albarà: </span>   <a href="/albara/{{ $encarrec->albara->id }}">{{ $encarrec->albara->id }}</a>  
                             @endif

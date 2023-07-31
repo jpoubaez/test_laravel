@@ -21,6 +21,12 @@
                 font-size:10px;
             }
 
+            .descripcio {
+               font-family: DejaVu Sans; 
+                font-size:15px;
+                font-weight: bold;
+            }
+
             .panel {
                 margin-bottom: 20px;
                 background-color: #fff;
@@ -93,10 +99,8 @@
                 @if ($albara->id)
                     <b>Número albarà: </b> {{ $albara->id }}
                 @endif
-                <br />
             </div>
             <br />
-            <h2>{{ $encarrec->descripcio }} {{ $albara->id ? '#' . $albara->id : '' }}</h2>
         </header>
         <main>
             <div style="clear:both; position:relative;">
@@ -127,6 +131,8 @@
                     </div>
                 </div>
             </div>
+            <span class="descripcio">{{ $encarrec->descripcio }} </span>
+            <br />
             <h4>Articles/Tasques:</h4>
             <table class="table table-bordered">
                 <thead>
