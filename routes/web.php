@@ -50,7 +50,8 @@ Route::get('kk', function () {
     //ddd($encarrec);
     $albara =  $encarrec->albara;
     $feines =  $encarrec->material_encarrec;  
-    return view('ladent.albarans.mostrapdf',[
+    //return view('ladent.albarans.mostrapdf',[
+    return view('ladent.albarans.plantilla',[
         'encarrec'    => $encarrec,
         'albara'    => $albara,
         'feines'    => $feines 
@@ -132,6 +133,7 @@ Route::get('albarans', [AlbaraController::class, 'index'])->name('albarans'); //
 Route::get('albara/{albara:id}', [AlbaraController::class, 'mostra']);
 Route::get('admin/albara/afegir/{encarrec:id}',[AlbaraController::class, 'afegir_albara']); // algun dia ->middleware('admin');
 Route::get('admin/albara/eliminar/{encarrec:id}',[AlbaraController::class, 'eliminar_albara']); // algun dia ->middleware('admin');
+Route::get('mostra/albara/{encarrec:id}',[AlbaraController::class, 'mostra_albara']); // algun dia ->middleware('admin');
 Route::get('print/albara/{encarrec:id}',[AlbaraController::class, 'imprimeix_albara']); // algun dia ->middleware('admin');
 
 
@@ -142,6 +144,7 @@ Route::get('admin/factura/buscaralbara/{factura:id}',[FacturaController::class, 
 Route::post('admin/factura/afegiralbara/{factura:id}',[FacturaController::class, 'afegir_albarafactura']); // algun dia ->middleware('admin');
 Route::get('admin/factura/treurealbara/{albara:id}',[FacturaController::class, 'eliminar_albarafactura']); // algun dia ->middleware('admin');
 Route::get('admin/factura/eliminar/{factura:id}',[FacturaController::class, 'eliminar_factura']); // algun dia ->middleware('admin');
+Route::get('mostra/factura/{factura:id}',[FacturaController::class, 'mostra_factura']); // algun dia ->middleware('admin');
 Route::get('print/factura/{factura:id}',[FacturaController::class, 'imprimeix_factura']); // algun dia ->middleware('admin');
 
 

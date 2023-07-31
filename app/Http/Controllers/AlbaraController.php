@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 use PDF;
 
 use App\Models\Albara;
@@ -68,6 +69,26 @@ class AlbaraController extends Controller
         return redirect($retorna)->with('exitos','L albarà s ha eliminat.');
     }
 
+    public function mostra_albara(Encarrec $encarrec)
+    {
+        
+        $albara =  $encarrec->albara;
+        $atributs = $albara->getAttributes();
+        $atributs['data_entrega'] = today()->toDateTimeString();
+        $albara->update($atributs);
+
+        $feines =  $encarrec->material_encarrec;
+
+        $data = [
+            'encarrec'    => $encarrec,
+            'albara'    => $albara,
+            'feines'    => $feines 
+        ];
+        
+        $pdf = PDF::loadView('ladent.albarans.plantilla',$data);
+        return $pdf->stream('albara.pdf'); // el mostra 
+    }
+
     public function imprimeix_albara(Encarrec $encarrec)
     {
         
@@ -88,8 +109,13 @@ class AlbaraController extends Controller
         
         
         //$pdf = PDF::loadView('ladent.dentistes.mostrapdf2');
-        $pdf = PDF::loadView('ladent.albarans.mostrapdf',$data);
+        //$pdf = PDF::loadView('ladent.albarans.mostrapdf',$data);
+        $pdf = PDF::loadView('ladent.albarans.plantilla',$data);
+        
+        //$retorna='/albara/'.$albara->id;; // fem ruta
+        //return redirect($retorna)->with('exitos','L albarà s ha imprès.');  
 
-        return $pdf->stream('dentista.pdf');  
+        //return $pdf->stream('albara.pdf'); // el mostra
+        return $pdf->download('albara.pdf'); // el baixa
     }
 }

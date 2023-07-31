@@ -131,12 +131,51 @@ class FacturaController extends Controller
         return redirect($retorna)->with('exitos','L albara s ha tret de la factura.');
     }
 
-
-    public function imprimeix_factura(Factura $factura)
+    public function mostra_factura(Factura $factura)
     {
         
-        $retorna='/factures'; // fem ruta
+        $albarans =  $factura->albarans;
+        $atributs = $factura->getAttributes();
+        $atributs['data_generacio'] = today()->toDateTimeString();
+        $factura->update($atributs);
 
-        return redirect($retorna)->with('exitos','La factura s ha imprès.');
+        $data = [
+            'factura'    => $factura,
+            'albarans'    => $albarans
+        ];
+        
+        $pdf = PDF::loadView('ladent.factures.plantilla',$data);
+        return $pdf->stream('factura.pdf'); // el mostra 
     }
+
+    public function imprimeix_factura(Encarrec $encarrec)
+    {
+        
+        $albara =  $encarrec->albara;
+        $atributs = $albara->getAttributes();
+        $atributs['data_entrega'] = today()->toDateTimeString();
+        $albara->update($atributs);
+        //ddd($albara);
+
+        $feines =  $encarrec->material_encarrec;
+        
+
+        $data = [
+            'encarrec'    => $encarrec,
+            'albara'    => $albara,
+            'feines'    => $feines 
+        ];
+        
+        
+        //$pdf = PDF::loadView('ladent.dentistes.mostrapdf2');
+        //$pdf = PDF::loadView('ladent.albarans.mostrapdf',$data);
+        $pdf = PDF::loadView('ladent.factures.plantilla',$data);
+        
+        //$retorna='/albara/'.$albara->id;; // fem ruta
+        //return redirect($retorna)->with('exitos','L albarà s ha imprès.');  
+
+        //return $pdf->stream('albara.pdf'); // el mostra
+        return $pdf->download('factura.pdf'); // el baixa
+    }
+
 }

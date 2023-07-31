@@ -29,6 +29,7 @@
                     <div class="relative flex lg:inline-flex items-center ">
                         <ul  style = "overflow: hidden; margin-left: 20px;" class="rounded-xl px-4 py-2 bg-blue-100 ">
                             <li style="float: left;"><a href="/admin/factura/eliminar/{{ $factura->id }}" class="text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Esborrar</a></li>
+                            <li style="float: left;"><a href="/mostra/factura/{{ $factura->id }}" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Mostra</a></li>
                             <li style="float: left;"><a href="/print/factura/{{ $factura->id }}" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Imprimir</a></li>
                             <li style="float: left;"><a href="/admin/factura/buscaralbara/{{ $factura->id }}" class="ml-6 text-xs font-bold uppercase hover:bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5">Afegir un albarà</a></li>
                         </ul>
