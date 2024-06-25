@@ -38,8 +38,13 @@ class MaterialController extends Controller
         $atributs = request()->validate([
             'nom' => 'required|max:255',
             'codimaterial' => 'required|digits:5|unique:materials',
+            'fotomaterial' => 'image',
             'preu_unitari' => 'required|numeric|between:0,9999.99'
         ]);        
+
+         if (isset($atributs['fotomaterial'])) {
+            $atributs['fotomaterial'] = request()->file('fotomaterial')->store('fotomaterial');
+        }
 
         $noumaterial=Material::create($atributs);
         $retorna='/material/'.$noumaterial->id; // fem ruta

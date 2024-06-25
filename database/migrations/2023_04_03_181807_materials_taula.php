@@ -19,6 +19,7 @@ class MaterialsTaula extends Migration
             $table->string('nom');
             $table->integer('codimaterial')->nullable()->unique();
             $table->float('preu_unitari',6,2);
+            $table->string('fotomaterial')->nullable();
             $table->timestamps();
         });
     }
