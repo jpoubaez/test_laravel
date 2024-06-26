@@ -24,6 +24,7 @@ class MaterialFactory extends Factory
         return [
             'nom' => $this->faker->words(1,true),
             'codimaterial' => $this->faker->unique()->randomNumber(5,true),
+            'fotomaterial' => 'fotomaterial/diamond.jpg',
             'preu_unitari' => $this->faker->randomFloat(2,0,10)
         ];
     }

@@ -28,6 +28,7 @@ class DentistaFactory extends Factory
             'adresa' => $this->faker->streetAddress(),
             'codipostal' => $this->faker->randomNumber(5,true),
             'ciutat' => $this->faker->city(),
+            'fotodentista' => 'thumbnails/dentista.jpg',
             'NIF' => $this->faker->unique()->randomNumber(8,true),
             'numcolegiat' => $this->faker->unique()->randomNumber(5,true)
         ];
